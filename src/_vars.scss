@@ -1,0 +1,26 @@
+$font-primary: 'Montserrat', sans-serif;
+$font-secondary: 'Merriweather', serif;
+
+$container-width: 1440px;
+$max-screen: 2560px;
+
+$fsz-default: 16px;
+$fsz-small: 12px;
+
+$color-primary: #032757;
+$color-secondary: #4fbeff;
+$white: #ffffff;
+$black: #131313;
+
+@mixin link-hover($color-inherit: false) {
+  text-decoration: none;
+  @if $color-inherit {
+    color: inherit;
+  }
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus-within {
+    text-decoration: none;
+  }
+}
