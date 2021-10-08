@@ -1,0 +1,11 @@
+@import '../../vars';
+
+.navigation {
+  &__item {
+    a {
+      @include link-hover(true);
+    }
+  }
+  &__mobile-menu-button {
+  }
+}

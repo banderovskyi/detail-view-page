@@ -9,3 +9,10 @@
 .footer {
   margin-top: auto;
 }
+
+.sm-only {
+  display: none;
+  @media screen and (max-width: $screen-sm - 1px) {
+    display: block;
+  }
+}
