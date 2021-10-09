@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NavigaionItem from './NavigaionItem';
+import NavigaionItem from '../NavigationItem/NavigaionItem';
 
 const SubMenu = ({ className, submenuItems }) => {
   return (
     <ul className={`submenu ${className ? className : ''}`}>
       {submenuItems?.map((item) => (
-        <NavigaionItem className={'submenu__item'} link={item.link} title={item.title} key={item.key} />
+        <NavigaionItem
+          className={'submenu__item'}
+          link={item.link}
+          title={item.title}
+          key={item.key}
+        />
       ))}
     </ul>
   );

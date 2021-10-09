@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SubMenu from './SubMenu';
+import SubMenu from '../SubMenu/SubMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import { openItem } from '../HeaderNavigation/HeaderNavigationSlice';
 
 const NavigaionItem = ({
   className,
@@ -10,25 +12,22 @@ const NavigaionItem = ({
   title,
   submenu,
   submenuClassName,
-  clickHandler,
   index,
   navItemRef,
 }) => {
   const isSubMenuPresent = submenu?.length > 0;
+  const dispatch = useDispatch();
 
-  const clickOnNode = (event) => {
+  const clickHandler = (event) => {
     event.preventDefault();
-    if (!clickHandler) {
-      return;
-    }
-    clickHandler(index);
+    dispatch(openItem(index));
   };
 
   if (isSubMenuPresent) {
     return (
       <li
         className={`${className ? className : ''}`}
-        onClick={clickOnNode}
+        onClick={clickHandler}
         ref={navItemRef}
       >
         <a href={link}>

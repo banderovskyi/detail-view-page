@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './Header.scss';
-import HeaderNavigaiton from './HeaderNavigaiton';
+import HeaderNavigaiton from './HeaderNavigation/HeaderNavigaiton';
+import { useDispatch } from 'react-redux';
+import { initSubMenuStatues } from './HeaderNavigation/HeaderNavigationSlice';
 
 const Header = (props) => {
-  const [state] = useState([
+  const [navItems] = useState([
     { link: '/', title: 'Home', key: Math.random() },
     {
       link: '#',
@@ -66,14 +69,17 @@ const Header = (props) => {
       ],
     },
   ]);
+  const dispatch = useDispatch();
+  const navItemsNumber = navItems.length ? navItems.length : 0;
+  const subMenuStatuses = new Array(navItemsNumber).fill(false);
+
+  useEffect(() => {
+    dispatch(initSubMenuStatues(subMenuStatuses));
+  }, []);
 
   return (
     <header className={`header ${props.className ? props.className : ''}`}>
-      <HeaderNavigaiton
-        className="header__navigaiton"
-        navItems={state}
-        navItemRef={props.navItemRef}
-      />
+      <HeaderNavigaiton className="header__navigaiton" navItems={navItems} />
     </header>
   );
 };
