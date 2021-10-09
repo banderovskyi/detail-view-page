@@ -4,18 +4,30 @@ import './Header.scss';
 import HeaderNavigaiton from './HeaderNavigaiton';
 
 const Header = (props) => {
-  const [state, setState] = useState([
+  const [state] = useState([
     { link: '/', title: 'Home', key: Math.random() },
     {
       link: '#',
       title: 'Sales',
       key: Math.random(),
       submenu: [
-        { link: '/sellers/link/', title: 'Western Suburbs', key: Math.random() },
+        {
+          link: '/sellers/link/',
+          title: 'Western Suburbs',
+          key: Math.random(),
+        },
         { link: '/sellers/link/', title: 'North Shore', key: Math.random() },
         { link: '/sellers/link/', title: 'South Shore', key: Math.random() },
-        { link: '/sellers/link/', title: 'Cape Cod & Islands', key: Math.random() },
-        { link: '/sellers/link/', title: 'Off Market Listings', key: Math.random() },
+        {
+          link: '/sellers/link/',
+          title: 'Cape Cod & Islands',
+          key: Math.random(),
+        },
+        {
+          link: '/sellers/link/',
+          title: 'Off Market Listings',
+          key: Math.random(),
+        },
       ],
     },
     {
@@ -23,11 +35,23 @@ const Header = (props) => {
       title: 'Rentals',
       key: Math.random(),
       submenu: [
-        { link: '/sellers/link/', title: 'Western Suburbs', key: Math.random() },
+        {
+          link: '/sellers/link/',
+          title: 'Western Suburbs',
+          key: Math.random(),
+        },
         { link: '/sellers/link/', title: 'North Shore', key: Math.random() },
         { link: '/sellers/link/', title: 'South Shore', key: Math.random() },
-        { link: '/sellers/link/', title: 'Cape Cod & Islands', key: Math.random() },
-        { link: '/sellers/link/', title: 'Off Market Listings', key: Math.random() },
+        {
+          link: '/sellers/link/',
+          title: 'Cape Cod & Islands',
+          key: Math.random(),
+        },
+        {
+          link: '/sellers/link/',
+          title: 'Off Market Listings',
+          key: Math.random(),
+        },
       ],
     },
     { link: '/', title: 'Quick search', key: Math.random() },
@@ -45,7 +69,11 @@ const Header = (props) => {
 
   return (
     <header className={`header ${props.className ? props.className : ''}`}>
-      <HeaderNavigaiton className="header__navigaiton" navItems={state} />
+      <HeaderNavigaiton
+        className="header__navigaiton"
+        navItems={state}
+        navItemRef={props.navItemRef}
+      />
     </header>
   );
 };

@@ -7,15 +7,20 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const HeaderNavigaiton = (props) => {
   const navItemsNumber = props.navItems.length ? props.navItems.length : 0;
-  const [subMenuStatuses, setSubMenuStatuses] = useState(new Array(navItemsNumber).fill(false));
+  const [subMenuStatuses, setSubMenuStatuses] = useState(
+    new Array(navItemsNumber).fill(false)
+  );
 
   const openSubMenuHandler = (index) => {
-    setSubMenuStatuses((previous) => {
-      return previous.map((item, itemIndex) => {
+    setSubMenuStatuses((prevStatusrsArr) => {
+      const newStatusrsArr = prevStatusrsArr.map((item, itemIndex) => {
         return itemIndex === index ? true : false;
       });
+      if (prevStatusrsArr[index] === newStatusrsArr[index]) {
+        return prevStatusrsArr.map((item) => (item = false));
+      }
+      return newStatusrsArr;
     });
-    console.log(subMenuStatuses);
   };
 
   return (
@@ -26,7 +31,19 @@ const HeaderNavigaiton = (props) => {
       <nav className="navigation__wrapeer">
         <ul className="navigation__list">
           {props.navItems?.map((item, index) => (
-            <NavigaionItem className={`navigation__item ${item.submenu ? 'navigation__item--dropdown' : ''} ${subMenuStatuses[index] ? 'navigation__item--active' : ''}`} link={item.link} title={item.title} key={item.key} submenu={item.submenu} submenuClassName={'navigation__sub-menu'} clickHandler={openSubMenuHandler} index={index} />
+            <NavigaionItem
+              className={`navigation__item ${
+                item.submenu ? 'navigation__item--dropdown' : ''
+              } ${subMenuStatuses[index] ? 'navigation__item--active' : ''}`}
+              link={item.link}
+              title={item.title}
+              key={item.key}
+              submenu={item.submenu}
+              submenuClassName={'navigation__sub-menu'}
+              clickHandler={openSubMenuHandler}
+              index={index}
+              navItemRef={props.navItemRef}
+            />
           ))}
         </ul>
       </nav>

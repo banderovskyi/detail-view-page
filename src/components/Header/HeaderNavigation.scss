@@ -5,6 +5,14 @@
     a {
       @include link-hover(true);
     }
+    .submenu {
+      display: none;
+    }
+    &--active {
+      .submenu {
+        display: block;
+      }
+    }
   }
   &__mobile-menu-button {
   }
