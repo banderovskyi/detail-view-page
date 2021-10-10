@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  navStatuses: [],
+  navSubMenusStatuses: [],
 };
 
 export const headerNavSlice = createSlice({
@@ -9,28 +9,31 @@ export const headerNavSlice = createSlice({
   initialState,
   reducers: {
     initSubMenuStatues: (state, action) => {
-      state.navStatuses = [...action.payload];
+      state.navSubMenusStatuses = [...action.payload];
     },
-    openItem: (state, action) => {
-      const openItemIndex = action.payload;
+    openNavItem: (state, action) => {
+      const openNavItemIndex = action.payload;
       let newStatuses;
-      newStatuses = state.navStatuses.map((item, itemIndex) => {
-        return itemIndex === openItemIndex ? true : false;
+      newStatuses = state.navSubMenusStatuses.map((item, itemIndex) => {
+        return itemIndex === openNavItemIndex ? true : false;
       });
-      if (state.navStatuses[openItemIndex]) {
-        newStatuses = state.navStatuses.map((item) => (item = false));
+      if (state.navSubMenusStatuses[openNavItemIndex]) {
+        newStatuses = state.navSubMenusStatuses.map((item) => (item = false));
       }
-      state.navStatuses = newStatuses;
+      state.navSubMenusStatuses = newStatuses;
     },
     closeAll: (state) => {
-      state.navStatuses = state.navStatuses.map((item) => (item = false));
+      state.navSubMenusStatuses = state.navSubMenusStatuses.map(
+        (item) => (item = false)
+      );
     },
   },
 });
 
-export const selectNavStatuses = (state) => state.navigation.navStatuses;
+export const selectNavSubMenusStatuses = (state) =>
+  state.navigation.navSubMenusStatuses;
 
-export const { initSubMenuStatues, openItem, closeAll } =
+export const { initSubMenuStatues, openNavItem, closeAll } =
   headerNavSlice.actions;
 
 export default headerNavSlice.reducer;

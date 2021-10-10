@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import PropTypes from 'prop-types';
 import SubMenu from '../SubMenu/SubMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
-import { openItem } from '../HeaderNavigation/HeaderNavigationSlice';
+import { openNavItem } from '../HeaderNavigation/HeaderNavigationSlice';
 
 const NavigaionItem = ({
   className,
@@ -13,23 +14,18 @@ const NavigaionItem = ({
   submenu,
   submenuClassName,
   index,
-  navItemRef,
 }) => {
   const isSubMenuPresent = submenu?.length > 0;
   const dispatch = useDispatch();
 
   const clickHandler = (event) => {
     event.preventDefault();
-    dispatch(openItem(index));
+    dispatch(openNavItem(index));
   };
 
   if (isSubMenuPresent) {
     return (
-      <li
-        className={`${className ? className : ''}`}
-        onClick={clickHandler}
-        ref={navItemRef}
-      >
+      <li className={`${className ? className : ''}`} onClick={clickHandler}>
         <a href={link}>
           {title}
           <FontAwesomeIcon icon={faChevronDown} size="xs" />
@@ -51,7 +47,7 @@ NavigaionItem.propTypes = {
   link: PropTypes.string,
   title: PropTypes.string,
   submenu: PropTypes.arrayOf(PropTypes.object),
-  clickHandler: PropTypes.func,
+  submenuClassName: PropTypes.string,
   index: PropTypes.number,
 };
 

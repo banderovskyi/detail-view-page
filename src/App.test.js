@@ -6,7 +6,11 @@ import App from './App';
 
 describe('App component', () => {
   it('should be rendered', () => {
-    const { container } = render(<App />);
+    const { container } = render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
 
     expect(container.querySelector('#App')).toBeInTheDocument();
   });

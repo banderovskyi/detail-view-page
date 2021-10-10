@@ -6,10 +6,10 @@ import NavigaionItem from '../NavigationItem/NavigaionItem';
 import './HeaderNavigation.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { selectNavStatuses } from './HeaderNavigationSlice';
+import { selectNavSubMenusStatuses } from './HeaderNavigationSlice';
 
 const HeaderNavigaiton = (props) => {
-  const navigationState = useSelector(selectNavStatuses);
+  const navSubMenusStatuses = useSelector(selectNavSubMenusStatuses);
 
   return (
     <div className={`navigation ${props.className ? props.className : ''}`}>
@@ -22,7 +22,9 @@ const HeaderNavigaiton = (props) => {
             <NavigaionItem
               className={`navigation__item ${
                 item.submenu ? 'navigation__item--dropdown' : ''
-              } ${navigationState[index] ? 'navigation__item--active' : ''}`}
+              } ${
+                navSubMenusStatuses[index] ? 'navigation__item--active' : ''
+              }`}
               link={item.link}
               title={item.title}
               key={item.key}
