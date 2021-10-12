@@ -7,14 +7,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { openNavItem } from '../HeaderNavigation/HeaderNavigationSlice';
 
-const NavigaionItem = ({
-  className,
-  link,
-  title,
-  submenu,
-  submenuClassName,
-  index,
-}) => {
+const NavigaionItem = ({ className, link, title, submenu, submenuClassName, index, isSubmenuActive }) => {
   const isSubMenuPresent = submenu?.length > 0;
   const dispatch = useDispatch();
 
@@ -30,7 +23,7 @@ const NavigaionItem = ({
           {title}
           <FontAwesomeIcon icon={faChevronDown} size="xs" />
         </a>
-        <SubMenu submenuItems={submenu} className={`${submenuClassName}`} />
+        <SubMenu submenuItems={submenu} className={`${submenuClassName} ${isSubmenuActive ? 'navigation__sub-menu--active' : ''}`} />
       </li>
     );
   } else {
@@ -49,6 +42,7 @@ NavigaionItem.propTypes = {
   submenu: PropTypes.arrayOf(PropTypes.object),
   submenuClassName: PropTypes.string,
   index: PropTypes.number,
+  isSubmenuActive: PropTypes.bool,
 };
 
 export default NavigaionItem;

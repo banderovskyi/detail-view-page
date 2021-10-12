@@ -5,10 +5,13 @@ import './Header.scss';
 import HeaderNavigaiton from './HeaderNavigation/HeaderNavigaiton';
 import { useDispatch } from 'react-redux';
 import { initSubMenuStatues } from './HeaderNavigation/HeaderNavigationSlice';
+import HeaderLogo from './HeaderLogo/HeaderLogo';
+import HeaderLinks from './HeaderLinks/HeaderLinks';
+import HeaderContacts from './HeaderContacts/HeaderContacts';
+import SearchButton from './SearchButton/SearchButton';
 
 const Header = (props) => {
   const [navItems] = useState([
-    { link: '/', title: 'Home', key: Math.random() },
     {
       link: '#',
       title: 'Sales',
@@ -69,6 +72,18 @@ const Header = (props) => {
       ],
     },
   ]);
+  const [logoInfo] = useState({
+    link: '/',
+    src: 'https://s3.amazonaws.com/files.usmre.com/8601/logo.svg',
+    alt: 'Logo',
+  });
+  const [headerLinks] = useState([
+    { title: 'My Favorites', link: '/listings/favorite/' },
+    { title: 'Contact', link: '/contact-us/' },
+    { title: 'Log In', link: '#' },
+    { title: 'Sign Up', link: '#' },
+  ]);
+  const [contacts] = useState([{ title: '132-132-1324', link: 'tel:1321321324' }]);
   const dispatch = useDispatch();
   const navItemsNumber = navItems.length ? navItems.length : 0;
   const subMenuStatuses = new Array(navItemsNumber).fill(false);
@@ -79,7 +94,17 @@ const Header = (props) => {
 
   return (
     <header className={`header ${props.className ? props.className : ''}`}>
-      <HeaderNavigaiton className="header__navigaiton" navItems={navItems} />
+      <div className="container">
+        <div className="header__part header__part_left">
+          <HeaderNavigaiton className="header__navigaiton" navItems={navItems} />
+        </div>
+        <HeaderLogo className="header__logo" {...logoInfo} />
+        <div className="header__part header__part_right">
+          <HeaderLinks className="header__links" links={headerLinks} />
+          <HeaderContacts className="header__contacts" contacts={contacts} />
+          <SearchButton className="header__search-button" link="/listings/" title="Search" />
+        </div>
+      </div>
     </header>
   );
 };

@@ -3,6 +3,7 @@ $font-secondary: 'Merriweather', serif;
 
 $container-width: 1440px;
 $max-screen: 2560px;
+$mobile-nav-breakpoint: 1350px;
 
 $fsz-default: 16px;
 $fsz-small: 12px;
@@ -29,3 +30,21 @@ $screen-sm: 768px;
 $screen-md: 992px;
 $screen-lg: 1200px;
 $screen-xl: 1440px;
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

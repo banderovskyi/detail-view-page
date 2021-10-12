@@ -1,0 +1,33 @@
+@import '../../../vars';
+
+.header-contacts {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+  &__item {
+    font-weight: 500;
+    a {
+      @include link-hover(true);
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+    svg {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .header-contacts {
+    &__item {
+      span {
+        display: none;
+      }
+      svg {
+        display: initial;
+      }
+    }
+  }
+}

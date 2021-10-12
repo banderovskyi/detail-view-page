@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  isMobileMenuVisible: false,
   navSubMenusStatuses: [],
 };
 
@@ -23,17 +24,20 @@ export const headerNavSlice = createSlice({
       state.navSubMenusStatuses = newStatuses;
     },
     closeAll: (state) => {
-      state.navSubMenusStatuses = state.navSubMenusStatuses.map(
-        (item) => (item = false)
-      );
+      state.navSubMenusStatuses = state.navSubMenusStatuses.map((item) => (item = false));
+    },
+    openMobileMenu: (state) => {
+      state.isMobileMenuVisible = true;
+    },
+    closeMobileMenu: (state) => {
+      state.isMobileMenuVisible = false;
     },
   },
 });
 
-export const selectNavSubMenusStatuses = (state) =>
-  state.navigation.navSubMenusStatuses;
+export const selectNavSubMenusStatuses = (state) => state.navigation.navSubMenusStatuses;
+export const selectMobileMenuVisabilty = (state) => state.navigation.isMobileMenuVisible;
 
-export const { initSubMenuStatues, openNavItem, closeAll } =
-  headerNavSlice.actions;
+export const { initSubMenuStatues, openNavItem, closeAll, openMobileMenu, closeMobileMenu } = headerNavSlice.actions;
 
 export default headerNavSlice.reducer;
