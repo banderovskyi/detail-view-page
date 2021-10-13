@@ -13,7 +13,7 @@ import {
   selectNavSubMenusStatuses,
 } from './HeaderNavigationSlice';
 
-const HeaderNavigaiton = (props) => {
+const HeaderNavigation = (props) => {
   const navSubMenusStatuses = useSelector(selectNavSubMenusStatuses);
   const isMobileMenuVisible = useSelector(selectMobileMenuVisabilty);
   const dispatch = useDispatch();
@@ -63,9 +63,9 @@ const HeaderNavigaiton = (props) => {
   );
 };
 
-HeaderNavigaiton.propTypes = {
+HeaderNavigation.propTypes = {
   className: PropTypes.string,
   navItems: PropTypes.arrayOf(PropTypes.object),
 };
 
-export default HeaderNavigaiton;
+export default HeaderNavigation;

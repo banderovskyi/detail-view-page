@@ -44,3 +44,12 @@ $logo-width: 200px;
     }
   }
 }
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .header {
+    padding: 20px 0;
+    &__contacts {
+      margin-right: 15px;
+    }
+  }
+}

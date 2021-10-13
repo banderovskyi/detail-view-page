@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './Header.scss';
-import HeaderNavigaiton from './HeaderNavigation/HeaderNavigaiton';
+import HeaderNavigation from './HeaderNavigation/HeaderNavigation';
 import { useDispatch } from 'react-redux';
 import { initSubMenuStatues } from './HeaderNavigation/HeaderNavigationSlice';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
@@ -90,7 +90,7 @@ const Header = (props) => {
     <header className={`header ${props.className ? props.className : ''}`}>
       <div className="container">
         <div className="header__part header__part_left">
-          <HeaderNavigaiton className="header__navigaiton" navItems={navItems} />
+          <HeaderNavigation className="header__navigation" navItems={navItems} />
         </div>
         <HeaderLogo className="header__logo" {...logoInfo} />
         <div className="header__part header__part_right">
