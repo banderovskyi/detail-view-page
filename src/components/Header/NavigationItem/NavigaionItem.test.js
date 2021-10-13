@@ -15,8 +15,8 @@ beforeEach(() => {
 });
 
 const submenuItems = [
-  { link: '/sellers/link/', title: 'Team', key: Math.random() },
-  { link: '/sellers/link/', title: 'Contact', key: Math.random() },
+  { link: '/sellers/link/', title: 'Team' },
+  { link: '/sellers/link/', title: 'Contact' },
 ];
 
 describe('NavigaionItem component', () => {
@@ -35,7 +35,11 @@ describe('NavigaionItem component', () => {
   it('should render submenu', () => {
     component = render(
       <Provider store={store}>
-        <NavigaionItem className={'tested-nav-item'} submenuClassName={'navigation__sub-menu'} submenu={submenuItems} />
+        <NavigaionItem
+          className={'tested-nav-item'}
+          submenuClassName={'navigation__sub-menu'}
+          submenu={submenuItems}
+        />
       </Provider>
     );
     expect(component.container.querySelector('ul.navigation__sub-menu')).toBeInTheDocument();

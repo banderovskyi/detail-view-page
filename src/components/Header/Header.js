@@ -15,66 +15,60 @@ const Header = (props) => {
     {
       link: '#',
       title: 'Sales',
-      key: Math.random(),
+
       submenu: [
         {
           link: '/sellers/link/',
           title: 'Western Suburbs',
-          key: Math.random(),
         },
-        { link: '/sellers/link/', title: 'North Shore', key: Math.random() },
-        { link: '/sellers/link/', title: 'South Shore', key: Math.random() },
+        { link: '/sellers/link/', title: 'North Shore' },
+        { link: '/sellers/link/', title: 'South Shore' },
         {
           link: '/sellers/link/',
           title: 'Cape Cod & Islands',
-          key: Math.random(),
         },
         {
           link: '/sellers/link/',
           title: 'Off Market Listings',
-          key: Math.random(),
         },
       ],
     },
     {
       link: '#',
       title: 'Rentals',
-      key: Math.random(),
+
       submenu: [
         {
           link: '/sellers/link/',
           title: 'Western Suburbs',
-          key: Math.random(),
         },
-        { link: '/sellers/link/', title: 'North Shore', key: Math.random() },
-        { link: '/sellers/link/', title: 'South Shore', key: Math.random() },
+        { link: '/sellers/link/', title: 'North Shore' },
+        { link: '/sellers/link/', title: 'South Shore' },
         {
           link: '/sellers/link/',
           title: 'Cape Cod & Islands',
-          key: Math.random(),
         },
         {
           link: '/sellers/link/',
           title: 'Off Market Listings',
-          key: Math.random(),
         },
       ],
     },
-    { link: '/', title: 'Quick search', key: Math.random() },
-    { link: '/', title: 'Neighborhoods', key: Math.random() },
+    { link: '/', title: 'Quick search' },
+    { link: '/', title: 'Neighborhoods' },
     {
       link: '/',
       title: 'About',
-      key: Math.random(),
+
       submenu: [
-        { link: '/sellers/link/', title: 'Team', key: Math.random() },
-        { link: '/sellers/link/', title: 'Contact', key: Math.random() },
+        { link: '/sellers/link/', title: 'Team' },
+        { link: '/sellers/link/', title: 'Contact' },
       ],
     },
   ]);
   const [logoInfo] = useState({
     link: '/',
-    src: 'https://s3.amazonaws.com/files.usmre.com/8601/logo.svg',
+    src: 'https://s3.amazonaws.com/files.usmre.com/8844/usm-logo-blue.svg',
     alt: 'Logo',
   });
   const [headerLinks] = useState([

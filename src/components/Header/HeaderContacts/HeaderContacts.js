@@ -8,7 +8,7 @@ const HeaderContacts = (props) => {
   return (
     <div className={`header-contacts ${props.className ? props.className : ''}`}>
       <ul className="header-contacts__list">
-        {props?.contacts.map((contact) => (
+        {props.contacts?.map((contact) => (
           <li className="header-contacts__item" key={`${contact.link}${contact.title}`}>
             <a href={contact.link}>
               {contact.link.includes('tel:') && <FontAwesomeIcon icon={faPhone} />}

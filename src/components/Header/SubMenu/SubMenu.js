@@ -7,7 +7,12 @@ const SubMenu = ({ className, submenuItems }) => {
   return (
     <ul className={`submenu ${className ? className : ''}`}>
       {submenuItems?.map((item) => (
-        <NavigaionItem className={'submenu__item'} link={item.link} title={item.title} key={item.key} />
+        <NavigaionItem
+          className={'submenu__item'}
+          link={item.link}
+          title={item.title}
+          key={`${item.link}${item.title}`}
+        />
       ))}
     </ul>
   );

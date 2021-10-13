@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const HeaderLogo = (props) => {
   return (
-    <a href={props.link} className={`logo ${props.className ? props.className : ''}`}>
-      <img src={props.src} alt={props.alt} />
+    <a href={props.link ? props.link : '/'} className={`logo ${props.className ? props.className : ''}`}>
+      <img src={props.src} alt={props.alt ? props.alt : 'Company logo'} />
     </a>
   );
 };

@@ -7,8 +7,8 @@ import { store } from '../../../app/store';
 let component;
 
 const submenuItems = [
-  { link: '/other-page/', title: 'North Shore', key: Math.random() },
-  { link: '/sellers/second-link/', title: 'South Shore', key: Math.random() },
+  { link: '/other-page/', title: 'North Shore' },
+  { link: '/sellers/second-link/', title: 'South Shore' },
 ];
 
 beforeEach(() => {
@@ -20,9 +20,7 @@ describe('SubMenu component', () => {
     expect(component.container.querySelector('.submenu')).toBeInTheDocument();
   });
   it('should get props className', () => {
-    expect(
-      component.container.querySelector('.tested-sub-menu')
-    ).toBeInTheDocument();
+    expect(component.container.querySelector('.tested-sub-menu')).toBeInTheDocument();
   });
   it('should render the items', () => {
     component = render(
@@ -30,9 +28,7 @@ describe('SubMenu component', () => {
         <SubMenu submenuItems={submenuItems} />
       </Provider>
     );
-    expect(component.container.querySelectorAll('li').length).toBe(
-      submenuItems.length
-    );
+    expect(component.container.querySelectorAll('li').length).toBe(submenuItems.length);
   });
   it('should render the item which are leading to other pages', () => {
     component = render(
