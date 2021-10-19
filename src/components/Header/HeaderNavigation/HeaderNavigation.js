@@ -10,11 +10,9 @@ import {
   closeMobileMenu,
   openMobileMenu,
   selectMobileMenuVisabilty,
-  selectNavSubMenusStatuses,
 } from './HeaderNavigationSlice';
 
 const HeaderNavigation = (props) => {
-  const navSubMenusStatuses = useSelector(selectNavSubMenusStatuses);
   const isMobileMenuVisible = useSelector(selectMobileMenuVisabilty);
   const dispatch = useDispatch();
 
@@ -24,6 +22,19 @@ const HeaderNavigation = (props) => {
 
   const closeMobileMenuHandler = () => {
     dispatch(closeMobileMenu());
+  };
+
+  const clickHandler = (index) => {
+    props.changeSubMenuStatuses((prevState) => {
+      let newStatuses;
+      newStatuses = prevState.map((item, itemIndex) => {
+        return itemIndex === index ? true : false;
+      });
+      if (prevState[index]) {
+        newStatuses = prevState.map((item) => (item = false));
+      }
+      return newStatuses;
+    });
   };
 
   return (
@@ -47,14 +58,15 @@ const HeaderNavigation = (props) => {
             <NavigaionItem
               className={`navigation__item
               ${item.submenu ? 'navigation__item--dropdown' : ''}
-              ${navSubMenusStatuses[index] ? 'navigation__item--active' : ''}`}
-              isSubmenuActive={navSubMenusStatuses[index]}
+              ${props.subMenuStatuses[index] ? 'navigation__item--active' : ''}`}
+              isSubmenuActive={props.subMenuStatuses[index]}
               link={item.link}
               title={item.title}
               key={`${item.link}${item.title}`}
               submenu={item.submenu}
               submenuClassName={'navigation__sub-menu'}
               index={index}
+              clickHandler={clickHandler}
             />
           ))}
         </ul>

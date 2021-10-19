@@ -4,26 +4,35 @@ import PropTypes from 'prop-types';
 import SubMenu from '../SubMenu/SubMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from 'react-redux';
-import { openNavItem } from '../HeaderNavigation/HeaderNavigationSlice';
 
-const NavigaionItem = ({ className, link, title, submenu, submenuClassName, index, isSubmenuActive }) => {
+const NavigaionItem = ({
+  className,
+  link,
+  title,
+  submenu,
+  submenuClassName,
+  index,
+  isSubmenuActive,
+  clickHandler,
+}) => {
   const isSubMenuPresent = submenu?.length > 0;
-  const dispatch = useDispatch();
-
-  const clickHandler = (event) => {
-    event.preventDefault();
-    dispatch(openNavItem(index));
-  };
 
   if (isSubMenuPresent) {
+    const clickOnItem = (e) => {
+      e.preventDefault();
+      clickHandler(index);
+    };
+
     return (
-      <li className={`${className ? className : ''}`} onClick={clickHandler}>
+      <li className={`${className ? className : ''}`} onClick={clickOnItem}>
         <a href={link}>
           {title}
           <FontAwesomeIcon icon={faChevronDown} size="xs" />
         </a>
-        <SubMenu submenuItems={submenu} className={`${submenuClassName} ${isSubmenuActive ? 'navigation__sub-menu--active' : ''}`} />
+        <SubMenu
+          submenuItems={submenu}
+          className={`${submenuClassName} ${isSubmenuActive ? 'navigation__sub-menu--active' : ''}`}
+        />
       </li>
     );
   } else {

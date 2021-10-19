@@ -22,7 +22,11 @@ const navItems = [
 beforeEach(() => {
   component = render(
     <Provider store={store}>
-      <HeaderNavigation className="header-navigation-tested" navItems={navItems} />
+      <HeaderNavigation
+        subMenuStatuses={[false, false, false]}
+        className="header-navigation-tested"
+        navItems={navItems}
+      />
     </Provider>
   ).container;
 });
