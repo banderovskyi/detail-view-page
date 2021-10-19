@@ -158,6 +158,10 @@ a {
   padding-right: 15px;
 }
 
+button {
+  cursor: pointer;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;

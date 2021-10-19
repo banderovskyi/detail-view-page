@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 
 import './App.scss';
 import { closeAll } from './components/Header/HeaderNavigation/HeaderNavigationSlice';
+import Aside from './components/Aside/Aside';
+import Slider from './components/Slider/Slider';
 
 function App() {
   const rootNode = useRef(null);
@@ -27,9 +29,14 @@ function App() {
     <div className="wrapper" id="App" ref={rootNode}>
       <div className="content ">
         <Header />
-        <main className="main ">
-          <h1>Hello World</h1>
-        </main>
+        <div className="page-wrapper">
+          <div className="container">
+            <main className="main page-wrapper__main">
+              <Slider />
+            </main>
+            <Aside className="page-wrapper__aside" />
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
