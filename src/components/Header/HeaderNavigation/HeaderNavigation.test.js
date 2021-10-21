@@ -17,24 +17,14 @@ const navItems = [
   },
 ];
 
-let mockSetMobMenu;
-
 beforeEach(() => {
-  mockSetMobMenu = jest.fn();
-
   component = render(
     <HeaderNavigation
       subMenuStatuses={[false, false, false]}
       className="header-navigation-tested"
       navItems={navItems}
-      isMobileMenuVisible={false}
-      changeMobileMenuVisability={mockSetMobMenu}
     />
   ).container;
-});
-
-afterEach(() => {
-  jest.clearAllMocks();
 });
 
 describe('Header navigation component', () => {

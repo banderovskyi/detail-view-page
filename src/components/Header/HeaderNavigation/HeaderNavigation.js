@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import NavigaionItem from '../NavigationItem/NavigaionItem';
 import './HeaderNavigation.scss';
@@ -7,12 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const HeaderNavigation = (props) => {
+  const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
+
   const openMobileMenuHandler = () => {
-    props.changeMobileMenuVisability(true);
+    setIsMobileMenuVisible(true);
   };
 
   const closeMobileMenuHandler = () => {
-    props.changeMobileMenuVisability(false);
+    setIsMobileMenuVisible(false);
   };
 
   const clickHandler = (index) => {
@@ -31,7 +33,7 @@ const HeaderNavigation = (props) => {
   return (
     <div
       className={`navigation ${props.className ? props.className : ''} ${
-        props.isMobileMenuVisible ? 'navigation--active' : ''
+        isMobileMenuVisible ? 'navigation--active' : ''
       }`}>
       <button
         className="navigation__mobile-menu-button navigation__mobile-menu-button_open"
