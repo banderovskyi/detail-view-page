@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState as useStateMock } from 'react';
 import { render } from '@testing-library/react';
 import Header from './Header';
 import { Provider } from 'react-redux';
 import { store } from '../../app/store';
 
 let component;
-const [myState, setMyState] = React.useState();
+let mockSet;
+let initStatues = [false, false, false];
 
 beforeEach(() => {
-  const myInitialState = [false, false, false];
-
-  React.useState = jest.fn().mockReturnValue([myInitialState, {}]);
+  mockSet = jest.fn();
 
   component = render(
     <Provider store={store}>
-      <Header subMenuStatuses={myState} changeSubMenuStatuses={setMyState} />
+      <Header changeSubMenuStatuses={mockSet} subMenuStatuses={initStatues} />
     </Provider>
   ).container;
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
 });
 
 describe('Header component', () => {

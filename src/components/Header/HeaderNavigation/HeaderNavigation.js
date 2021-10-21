@@ -1,27 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavigaionItem from '../NavigationItem/NavigaionItem';
 import './HeaderNavigation.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import {
-  closeMobileMenu,
-  openMobileMenu,
-  selectMobileMenuVisabilty,
-} from './HeaderNavigationSlice';
 
 const HeaderNavigation = (props) => {
-  const isMobileMenuVisible = useSelector(selectMobileMenuVisabilty);
-  const dispatch = useDispatch();
-
   const openMobileMenuHandler = () => {
-    dispatch(openMobileMenu());
+    props.changeMobileMenuVisability(true);
   };
 
   const closeMobileMenuHandler = () => {
-    dispatch(closeMobileMenu());
+    props.changeMobileMenuVisability(false);
   };
 
   const clickHandler = (index) => {
@@ -40,7 +31,7 @@ const HeaderNavigation = (props) => {
   return (
     <div
       className={`navigation ${props.className ? props.className : ''} ${
-        isMobileMenuVisible ? 'navigation--active' : ''
+        props.isMobileMenuVisible ? 'navigation--active' : ''
       }`}>
       <button
         className="navigation__mobile-menu-button navigation__mobile-menu-button_open"
