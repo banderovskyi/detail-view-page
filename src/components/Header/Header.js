@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './Header.scss';
 import HeaderNavigation from './HeaderNavigation/HeaderNavigation';
-import { useDispatch } from 'react-redux';
-import { initSubMenuStatues } from './HeaderNavigation/HeaderNavigationSlice';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
 import HeaderLinks from './HeaderLinks/HeaderLinks';
 import HeaderContacts from './HeaderContacts/HeaderContacts';
@@ -78,22 +76,28 @@ const Header = (props) => {
     { title: 'Sign Up', link: '#' },
   ]);
   const [contacts] = useState([{ title: '132-132-1324', link: 'tel:1321321324' }]);
-  const dispatch = useDispatch();
   const navItemsNumber = navItems.length ? navItems.length : 0;
   const subMenuStatuses = new Array(navItemsNumber).fill(false);
 
   useEffect(() => {
-    dispatch(initSubMenuStatues(subMenuStatuses));
+    props.changeSubMenuStatuses(subMenuStatuses);
   }, []);
 
   return (
     <header className={`header ${props.className ? props.className : ''}`}>
       <div className="container">
-        <div className="header__part header__part_left">
-          <HeaderNavigation className="header__navigation" navItems={navItems} />
+        <div className="header__part header__part--left">
+          <HeaderNavigation
+            className="header__navigation"
+            navItems={navItems}
+            subMenuStatuses={props.subMenuStatuses}
+            changeSubMenuStatuses={props.changeSubMenuStatuses}
+            isMobileMenuVisible={props.isMobileMenuVisible}
+            changeMobileMenuVisability={props.changeMobileMenuVisability}
+          />
         </div>
         <HeaderLogo className="header__logo" {...logoInfo} />
-        <div className="header__part header__part_right">
+        <div className="header__part header__part--right">
           <HeaderLinks className="header__links" links={headerLinks} />
           <HeaderContacts className="header__contacts" contacts={contacts} />
           <SearchButton className="header__search-button" link="/listings/" title="Search" />
@@ -105,6 +109,7 @@ const Header = (props) => {
 
 Header.propTypes = {
   className: PropTypes.string,
+  subMenuStatuses: PropTypes.array,
 };
 
 export default Header;

@@ -1,7 +1,5 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from '../../../app/store';
 import HeaderNavigation from './HeaderNavigation';
 
 let component;
@@ -19,12 +17,24 @@ const navItems = [
   },
 ];
 
+let mockSetMobMenu;
+
 beforeEach(() => {
+  mockSetMobMenu = jest.fn();
+
   component = render(
-    <Provider store={store}>
-      <HeaderNavigation className="header-navigation-tested" navItems={navItems} />
-    </Provider>
+    <HeaderNavigation
+      subMenuStatuses={[false, false, false]}
+      className="header-navigation-tested"
+      navItems={navItems}
+      isMobileMenuVisible={false}
+      changeMobileMenuVisability={mockSetMobMenu}
+    />
   ).container;
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
 });
 
 describe('Header navigation component', () => {
@@ -50,6 +60,7 @@ describe('Header navigation component', () => {
       '.header-navigation-tested .navigation__mobile-menu-button_close'
     );
     fireEvent.click(mobileMenuOpen);
+    console.log(component.querySelector('.header-navigation-tested').className);
     expect(
       component.querySelector('.header-navigation-tested').className.includes('navigation--active')
     ).toBe(true);
