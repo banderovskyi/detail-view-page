@@ -10,7 +10,6 @@ function App() {
   const rootNode = useRef(null);
   const navigationSelecor = '.navigation__item';
   const [subMenuStatuses, setSubMenuStatuses] = useState([]);
-  const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
 
   useEffect(() => {
     const onClick = (e) => {
@@ -28,12 +27,7 @@ function App() {
   return (
     <div className="wrapper" id="App" ref={rootNode}>
       <div className="content ">
-        <Header
-          changeSubMenuStatuses={setSubMenuStatuses}
-          subMenuStatuses={subMenuStatuses}
-          changeMobileMenuVisability={setIsMobileMenuVisible}
-          isMobileMenuVisible={isMobileMenuVisible}
-        />
+        <Header changeSubMenuStatuses={setSubMenuStatuses} subMenuStatuses={subMenuStatuses} />
         <div className="page-wrapper">
           <div className="container">
             <main className="main page-wrapper__main">

@@ -92,8 +92,6 @@ const Header = (props) => {
             navItems={navItems}
             subMenuStatuses={props.subMenuStatuses}
             changeSubMenuStatuses={props.changeSubMenuStatuses}
-            isMobileMenuVisible={props.isMobileMenuVisible}
-            changeMobileMenuVisability={props.changeMobileMenuVisability}
           />
         </div>
         <HeaderLogo className="header__logo" {...logoInfo} />
