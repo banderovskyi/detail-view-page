@@ -3,31 +3,39 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import './Slider.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronLeft,
+  faChevronRight,
+  faSearchPlus,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import SliderItem from './SliderItem';
-import { debounce } from 'debounce';
+import SliderWrapper from './SliderWrapper';
 
 const Slider = (props) => {
   const [images] = useState([
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=0', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=1', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=2', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=3', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=4', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=5', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=6', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=7', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=8', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=9', alt: 'Property image' },
-    { src: 'https://media.mlspin.com/photo.aspx?mls=72889712&n=10', alt: 'Property image' },
+    { src: '/images/image-1', alt: 'Property image' },
+    { src: '/images/image-2', alt: 'Property image' },
+    { src: '/images/image-3', alt: 'Property image' },
+    { src: '/images/image-4', alt: 'Property image' },
+    { src: '/images/image-5', alt: 'Property image' },
+    { src: '/images/image-6', alt: 'Property image' },
+    { src: '/images/image-7', alt: 'Property image' },
+    { src: '/images/image-8', alt: 'Property image' },
+    { src: '/images/image-9', alt: 'Property image' },
+    { src: '/images/image-10', alt: 'Property image' },
+    { src: '/images/image-11', alt: 'Property image' },
   ]);
   const [imagesLength] = useState(images.length);
-  const [largeImageSize] = useState('&h=900&w=1200');
-  const [smallImageSize] = useState('&h=480&w=640');
+  const [largeImageSize] = useState('-h=900w=1200');
+  const [smallImageSize] = useState('-h=480w=640');
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [mainWrapperWidth, setMainWrapperWidth] = useState(0);
   const [imageNodeWidth, setImageNodeWidth] = useState(0);
   const [transformWidth, setTransformWidth] = useState(0);
+  const [thumbsCount, setThumbsCount] = useState(5);
+  const [isFullScreenButtonVisible, setIsFullScreenButtonVisible] = useState(false);
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const $largeWrapper = useRef(null);
 
   const initSliderSizes = () => {
@@ -35,12 +43,18 @@ const Slider = (props) => {
     setImageNodeWidth(nodeWidth);
     setMainWrapperWidth(nodeWidth * imagesLength);
     setTransformWidth(nodeWidth * activeImageIndex);
+    if (window.innerWidth < 768) {
+      setThumbsCount(3);
+    } else {
+      setThumbsCount(5);
+    }
   };
 
   useEffect(() => {
     initSliderSizes();
-    window.addEventListener('resize', initSliderSizes);
-
+    window.addEventListener('resize', () => {
+      initSliderSizes();
+    });
     return () => {
       window.removeEventListener('resize', initSliderSizes);
     };
@@ -78,44 +92,89 @@ const Slider = (props) => {
     });
   };
 
+  const clickOnThumbHandler = (index) => {
+    setActiveImageIndex(index);
+  };
+
+  const enableFullScreen = () => {
+    setIsFullScreen(true);
+    setThumbsCount(10);
+  };
+
+  const disableFullScreen = () => {
+    setIsFullScreen(false);
+    setThumbsCount(5);
+  };
+
+  useEffect(() => {
+    initSliderSizes();
+  }, [isFullScreen]);
+
   return (
-    <div className={`slider ${props.className ? props.className : ''}`}>
-      <div className="slider__buttons">
-        <button onClick={prevClickHandler} className="slider__button slider__button-prev">
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-        <button onClick={nextClickHandler} className="slider__button slider__button-next">
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
-      </div>
+    <div
+      className={`slider ${isFullScreen ? 'slider--full-screen' : ''} ${
+        props.className ? props.className : ''
+      } `}
+      ref={$largeWrapper}
+      onMouseEnter={() => setIsFullScreenButtonVisible(true)}
+      onMouseLeave={() => setIsFullScreenButtonVisible(false)}>
       <div className="slider__main">
-        <div className="slider__wrapper-outer" ref={$largeWrapper}>
-          <div
-            className="slider__wrapper"
-            style={{
-              transform: `translateX(-${transformWidth}px)`,
-              width: mainWrapperWidth,
-            }}>
-            {images.map((image, index) => (
-              <SliderItem
-                src={image.src}
-                imageSizeSrc={largeImageSize}
-                width={imageNodeWidth}
-                itemIndex={index}
-                activeImageIndex={activeImageIndex}
-                key={Math.random()}
-              />
-            ))}
-          </div>
+        <div className="slider__buttons">
+          <button onClick={prevClickHandler} className="slider__button slider__button--prev">
+            <FontAwesomeIcon icon={faChevronLeft} size="4x" />
+          </button>
+          <button onClick={nextClickHandler} className="slider__button slider__button--next">
+            <FontAwesomeIcon icon={faChevronRight} size="4x" />
+          </button>
+          {!isFullScreen && isFullScreenButtonVisible && (
+            <button
+              onClick={enableFullScreen}
+              className="slider__button slider__button--full-screen">
+              <FontAwesomeIcon icon={faSearchPlus} size="2x" />
+            </button>
+          )}
+          {isFullScreen && (
+            <button
+              onClick={disableFullScreen}
+              className="slider__button slider__button--disable-full-screen">
+              <FontAwesomeIcon icon={faTimes} size="3x" />
+            </button>
+          )}
         </div>
+        <SliderWrapper mainWrapperWidth={mainWrapperWidth} transformWidth={transformWidth} onS>
+          {images.map((image, index) => (
+            <SliderItem
+              src={image.src}
+              imageSize={largeImageSize}
+              width={imageNodeWidth}
+              itemIndex={index}
+              activeImageIndex={activeImageIndex}
+              key={Math.random()}
+            />
+          ))}
+        </SliderWrapper>
       </div>
-      {/* <div className="slider__thumbs">
-        {images.map((image) => (
-          <div className="slider__item">
-            <img src={image.src + smallImageSize} alt={image.alt} />
-          </div>
-        ))}
-      </div> */}
+      <div className="slider__thumbs">
+        <SliderWrapper
+          mainWrapperWidth={mainWrapperWidth / thumbsCount}
+          transformWidth={
+            activeImageIndex < imagesLength - thumbsCount
+              ? transformWidth / thumbsCount
+              : mainWrapperWidth / thumbsCount - imageNodeWidth
+          }>
+          {images.map((image, index) => (
+            <SliderItem
+              src={image.src}
+              imageSize={smallImageSize}
+              width={imageNodeWidth / thumbsCount}
+              itemIndex={index}
+              activeImageIndex={activeImageIndex}
+              key={Math.random()}
+              clickHandler={clickOnThumbHandler}
+            />
+          ))}
+        </SliderWrapper>
+      </div>
     </div>
   );
 };

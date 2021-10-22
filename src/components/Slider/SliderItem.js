@@ -6,8 +6,10 @@ const SliderItem = (props) => {
     <div
       className={`slider__item ${
         props.itemIndex === props.activeImageIndex ? 'slider__item--active' : ''
-      }`}>
-      <img src={props.src + props.imageSizeSrc} alt={props.alt} style={{ width: props.width }} />
+      }`}
+      onClick={() => props.clickHandler && props.clickHandler(props.itemIndex)}
+      style={{ width: props.width }}>
+      <img src={`${props.src}${props.imageSize}.jpeg`} alt={props.alt} />
     </div>
   );
 };
@@ -16,7 +18,7 @@ SliderItem.propTypes = {
   itemIndex: PropTypes.number,
   activeImageIndex: PropTypes.number,
   src: PropTypes.string,
-  imageSizeSrc: PropTypes.string,
+  imageSize: PropTypes.string,
   width: PropTypes.number,
 };
 
