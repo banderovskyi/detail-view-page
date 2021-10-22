@@ -45,7 +45,7 @@ const Slider = (props) => {
     setTransformWidth(nodeWidth * activeImageIndex);
     if (window.innerWidth < 768) {
       setThumbsCount(3);
-    } else {
+    } else if (!isFullScreen) {
       setThumbsCount(5);
     }
   };
