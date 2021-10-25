@@ -26,16 +26,26 @@ const Slider = (props) => {
     { src: '/images/image-10', alt: 'Property image' },
     { src: '/images/image-11', alt: 'Property image' },
   ]);
+  const mobileBreakpoint = 768;
+
+  const thumbsOnDesktop = 7;
+  const thumbsOnMobile = 3;
+  const thumbsOnFullScreen = 10;
+  const [thumbsCount, setThumbsCount] = useState(thumbsOnDesktop);
+
   const [imagesLength] = useState(images.length);
+
   const [largeImageSize] = useState('-h=900w=1200');
   const [smallImageSize] = useState('-h=480w=640');
+
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [mainWrapperWidth, setMainWrapperWidth] = useState(0);
   const [imageNodeWidth, setImageNodeWidth] = useState(0);
   const [transformWidth, setTransformWidth] = useState(0);
-  const [thumbsCount, setThumbsCount] = useState(5);
+
   const [isFullScreenButtonVisible, setIsFullScreenButtonVisible] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
+
   const $largeWrapper = useRef(null);
 
   const initSliderSizes = () => {
@@ -43,10 +53,10 @@ const Slider = (props) => {
     setImageNodeWidth(nodeWidth);
     setMainWrapperWidth(nodeWidth * imagesLength);
     setTransformWidth(nodeWidth * activeImageIndex);
-    if (window.innerWidth < 768) {
-      setThumbsCount(3);
+    if (window.innerWidth < mobileBreakpoint) {
+      setThumbsCount(thumbsOnMobile);
     } else if (!isFullScreen) {
-      setThumbsCount(5);
+      setThumbsCount(thumbsOnDesktop);
     }
   };
 
@@ -98,12 +108,12 @@ const Slider = (props) => {
 
   const enableFullScreen = () => {
     setIsFullScreen(true);
-    setThumbsCount(10);
+    setThumbsCount(thumbsOnFullScreen);
   };
 
   const disableFullScreen = () => {
     setIsFullScreen(false);
-    setThumbsCount(5);
+    setThumbsCount(thumbsOnDesktop);
   };
 
   useEffect(() => {
