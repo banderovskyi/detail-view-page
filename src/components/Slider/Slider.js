@@ -14,17 +14,17 @@ import SliderWrapper from './SliderWrapper';
 
 const Slider = (props) => {
   const [images] = useState([
-    { src: '/images/image-1', alt: 'Property image' },
-    { src: '/images/image-2', alt: 'Property image' },
-    { src: '/images/image-3', alt: 'Property image' },
-    { src: '/images/image-4', alt: 'Property image' },
-    { src: '/images/image-5', alt: 'Property image' },
-    { src: '/images/image-6', alt: 'Property image' },
-    { src: '/images/image-7', alt: 'Property image' },
-    { src: '/images/image-8', alt: 'Property image' },
-    { src: '/images/image-9', alt: 'Property image' },
-    { src: '/images/image-10', alt: 'Property image' },
-    { src: '/images/image-11', alt: 'Property image' },
+    { src: 'images/image-1', alt: 'Property image' },
+    { src: 'images/image-2', alt: 'Property image' },
+    { src: 'images/image-3', alt: 'Property image' },
+    { src: 'images/image-4', alt: 'Property image' },
+    { src: 'images/image-5', alt: 'Property image' },
+    { src: 'images/image-6', alt: 'Property image' },
+    { src: 'images/image-7', alt: 'Property image' },
+    { src: 'images/image-8', alt: 'Property image' },
+    { src: 'images/image-9', alt: 'Property image' },
+    { src: 'images/image-10', alt: 'Property image' },
+    { src: 'images/image-11', alt: 'Property image' },
   ]);
   const mobileBreakpoint = 768;
 
