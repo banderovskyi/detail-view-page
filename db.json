@@ -1,0 +1,77 @@
+{
+  "main-navigation": [
+    {
+      "link": "#",
+      "title": "Sales",
+      "key": "Math.random()",
+      "submenu": [
+        {
+          "link": "/sellers/link/",
+          "title": "Western Suburbs",
+          "key": "Math.random()"
+        },
+        { "link": "/sellers/link/", "title": "North Shore", "key": "Math.random()" },
+        { "link": "/sellers/link/", "title": "South Shore", "key": "Math.random()" },
+        {
+          "link": "/sellers/link/",
+          "title": "Cape Cod & Islands",
+          "key": "Math.random()"
+        },
+        {
+          "link": "/sellers/link/",
+          "title": "Off Market Listings",
+          "key": "Math.random()"
+        }
+      ]
+    },
+    {
+      "link": "#",
+      "title": "Rentals",
+      "key": "Math.random()",
+      "submenu": [
+        {
+          "link": "/sellers/link/",
+          "title": "Western Suburbs",
+          "key": "Math.random()"
+        },
+        { "link": "/sellers/link/", "title": "North Shore", "key": "Math.random()" },
+        { "link": "/sellers/link/", "title": "South Shore", "key": "Math.random()" },
+        {
+          "link": "/sellers/link/",
+          "title": "Cape Cod & Islands",
+          "key": "Math.random()"
+        },
+        {
+          "link": "/sellers/link/",
+          "title": "Off Market Listings",
+          "key": "Math.random()"
+        }
+      ]
+    },
+    { "link": "/", "title": "Quick search", "key": "Math.random()" },
+    { "link": "/", "title": "Neighborhoods", "key": "Math.random()" },
+    {
+      "link": "/",
+      "title": "About",
+      "key": "Math.random()",
+      "submenu": [
+        { "link": "/sellers/link/", "title": "Team", "key": "Math.random()" },
+        { "link": "/sellers/link/", "title": "Contact", "key": "Math.random()" }
+      ]
+    }
+  ],
+  "header-info": {
+    "logo": {
+      "link": "/",
+      "src": "https://s3.amazonaws.com/files.usmre.com/8601/logo.svg",
+      "alt": "Logo"
+    },
+    "links": [
+      { "title": "My Favorites", "link": "/listings/favorite/" },
+      { "title": "Contact", "link": "/contact-us/" },
+      { "title": "Log In", "link": "#" },
+      { "title": "Sign Up", "link": "#" }
+    ],
+    "contacts": [{ "title": "132-132-1324", "link": "tel:1321321324" }]
+  }
+}

@@ -1,0 +1,28 @@
+@import '../../../vars';
+
+.submenu {
+  min-width: 200px;
+  padding: 15px;
+  box-shadow: -1px 9px 5px -1px rgba(0, 0, 0, 0.15);
+  background: $white;
+  &__item {
+    font-size: 14px;
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+    a {
+      @include link-hover(true);
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-nav-breakpoint) {
+  .submenu {
+    box-shadow: none;
+    min-width: none;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    background-color: #f7f7f7;
+  }
+}
