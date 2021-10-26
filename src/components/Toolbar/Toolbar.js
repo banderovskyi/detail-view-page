@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Toolbar.scss';
-import Button from '../UI/Button';
+import Button from '../UI/Button/Button';
 import { faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const Toolbar = (props) => {
