@@ -41,7 +41,7 @@
   &__main {
     margin-bottom: 5px;
     position: relative;
-
+    overflow: hidden;
     img {
       max-height: 700px;
     }
@@ -108,8 +108,14 @@
     &--full-screen {
       left: 50%;
       transform: translateX(-50%);
-      bottom: 20px;
+      bottom: -100px;
       top: auto;
+      opacity: 0;
+      transition: bottom 0.3s, opacity 0.3s;
+      &--active {
+        bottom: 10px;
+        opacity: 1;
+      }
     }
     &--disable-full-screen {
       right: 20px;

@@ -136,13 +136,15 @@ const Slider = (props) => {
           <button onClick={nextClickHandler} className="slider__button slider__button--next">
             <FontAwesomeIcon icon={faChevronRight} size="4x" />
           </button>
-          {!isFullScreen && isFullScreenButtonVisible && (
-            <button
-              onClick={enableFullScreen}
-              className="slider__button slider__button--full-screen">
-              <FontAwesomeIcon icon={faSearchPlus} size="2x" />
-            </button>
-          )}
+          <button
+            onClick={enableFullScreen}
+            className={`slider__button slider__button--full-screen ${
+              !isFullScreen && isFullScreenButtonVisible
+                ? 'slider__button--full-screen--active'
+                : ''
+            }`}>
+            <FontAwesomeIcon icon={faSearchPlus} size="2x" />
+          </button>
           {isFullScreen && (
             <button
               onClick={disableFullScreen}
