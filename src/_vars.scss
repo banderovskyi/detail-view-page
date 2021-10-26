@@ -15,6 +15,8 @@ $color-border: #ebebeb;
 $white: #ffffff;
 $black: #131313;
 
+$z-index-modal: 9999;
+
 @mixin link-hover($color-inherit: false) {
   text-decoration: none;
   @if $color-inherit {

@@ -114,6 +114,7 @@ body {
   min-width: 320px;
   font-family: $font-primary;
   font-size: $fsz-default;
+  color: $black;
 }
 menu,
 ol,
@@ -158,4 +159,8 @@ a {
   padding-left: 15px;
   padding-right: 15px;
   max-width: 1920px;
+}
+
+button {
+  cursor: pointer;
 }

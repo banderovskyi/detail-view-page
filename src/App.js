@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import './App.scss';
 import Aside from './components/Aside/Aside';
 import Slider from './components/Slider/Slider';
+import Modal from './components/UI/Modal/Modal';
 
 function App() {
   const rootNode = useRef(null);
@@ -38,6 +39,10 @@ function App() {
         </div>
       </div>
       <Footer />
+      <Modal
+        title="Log in or create an account to save this listing to your favorites"
+        subtitle="Log in to your account to save your favorite listings for later."
+      />
     </div>
   );
 }
