@@ -1,15 +1,14 @@
 @import '../../vars';
 
-.slider {
-  &__wrapper-outer {
-    overflow: hidden;
-    min-height: 1px;
-  }
-  &__wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    transition: all 0.3s;
-  }
+.slider__wrapper-outer {
+  overflow: hidden;
+  min-height: 1px;
+}
+
+.slider__wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  transition: all 0.3s;
 }
 
 .slider {
