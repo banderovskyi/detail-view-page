@@ -130,25 +130,23 @@ const Slider = (props) => {
       onMouseLeave={() => setIsFullScreenButtonVisible(false)}>
       <div className="slider__main">
         <div className="slider__buttons">
-          <button onClick={prevClickHandler} className="slider__button slider__button--prev">
+          <button onClick={prevClickHandler} className="slider__button slider__prev-button">
             <FontAwesomeIcon icon={faChevronLeft} size="4x" />
           </button>
-          <button onClick={nextClickHandler} className="slider__button slider__button--next">
+          <button onClick={nextClickHandler} className="slider__button slider__next-button">
             <FontAwesomeIcon icon={faChevronRight} size="4x" />
           </button>
           <button
             onClick={enableFullScreen}
-            className={`slider__button slider__button--full-screen ${
-              !isFullScreen && isFullScreenButtonVisible
-                ? 'slider__button--full-screen--active'
-                : ''
+            className={`slider__button slider__full-screen-button ${
+              !isFullScreen && isFullScreenButtonVisible ? 'slider__full-screen-button--active' : ''
             }`}>
             <FontAwesomeIcon icon={faSearchPlus} size="2x" />
           </button>
           {isFullScreen && (
             <button
               onClick={disableFullScreen}
-              className="slider__button slider__button--disable-full-screen">
+              className="slider__button slider__disable-full-screen-button">
               <FontAwesomeIcon icon={faTimes} size="3x" />
             </button>
           )}

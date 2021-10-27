@@ -16,8 +16,8 @@ describe('Slider component', () => {
     expect(component.querySelectorAll('img').length).toBeTruthy();
   });
   it('render the buttons', () => {
-    expect(component.querySelector('.slider__button--prev')).toBeInTheDocument();
-    expect(component.querySelector('.slider__button--next')).toBeInTheDocument();
+    expect(component.querySelector('.slider__prev-button')).toBeInTheDocument();
+    expect(component.querySelector('.slider__next-button')).toBeInTheDocument();
   });
   it('have main and thumbs parts', () => {
     expect(component.querySelector('.slider__main')).toBeInTheDocument();
@@ -30,21 +30,21 @@ describe('Slider component', () => {
     expect(component.querySelector('.slider__wrapper').style.transform).toBe('translateX(-0px)');
   });
   it('should change by items on button click', () => {
-    fireEvent.click(component.querySelector('.slider__button--next'));
-    fireEvent.click(component.querySelector('.slider__button--next'));
+    fireEvent.click(component.querySelector('.slider__next-button'));
+    fireEvent.click(component.querySelector('.slider__next-button'));
 
     expect(
       component.querySelectorAll('.slider__item')[2].className.includes('slider__item--active')
     ).toBe(true);
 
-    fireEvent.click(component.querySelector('.slider__button--prev'));
+    fireEvent.click(component.querySelector('.slider__prev-button'));
 
     expect(
       component.querySelectorAll('.slider__item')[1].className.includes('slider__item--active')
     ).toBe(true);
 
-    fireEvent.click(component.querySelector('.slider__button--prev'));
-    fireEvent.click(component.querySelector('.slider__button--prev'));
+    fireEvent.click(component.querySelector('.slider__prev-button'));
+    fireEvent.click(component.querySelector('.slider__prev-button'));
 
     expect(
       component
@@ -56,9 +56,9 @@ describe('Slider component', () => {
   });
   it('should have full screen mode on hover', () => {
     fireEvent.mouseOver(component.querySelector('.slider'));
-    fireEvent.click(component.querySelector('.slider__button--full-screen'));
+    fireEvent.click(component.querySelector('.slider__full-screen-button'));
     expect(component.querySelector('.slider').className.includes('slider--full-screen')).toBe(true);
-    fireEvent.click(component.querySelector('.slider__button--disable-full-screen'));
+    fireEvent.click(component.querySelector('.slider__disable-full-screen-button'));
     expect(component.querySelector('.slider').className.includes('slider--full-screen')).toBe(
       false
     );
