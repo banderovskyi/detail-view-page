@@ -3,17 +3,28 @@ import PropTypes from 'prop-types';
 import './Modal.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import { closeModal } from './ModalSlice';
 
 const Modal = (props) => {
+  const dispatch = useDispatch();
+
+  const closeModalHandler = () => {
+    dispatch(closeModal());
+  };
+
   return (
-    <div className="overlay">
-      <div className="modal">
+    <div className={`overlay ${props.isActive ? 'overlay--active' : ''}`}>
+      <div
+        className={`modal
+        ${props.children ? 'modal--with-content' : ''}
+        `}>
         <header className="modal__header">
-          <button className="modal__close">
+          <button onClick={closeModalHandler} className="modal__close">
             <FontAwesomeIcon icon={faTimes} size="2x" />
           </button>
           <div className="modal__title">{props.title}</div>
-          <div className="modal__sub-title">{props.subtitle}</div>
+          {props.subtitle && <div className="modal__sub-title">{props.subtitle}</div>}
         </header>
         <div className="modal__content">{props.children}</div>
       </div>
@@ -24,6 +35,7 @@ const Modal = (props) => {
 Modal.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  isActive: PropTypes.bool,
 };
 
 export default Modal;

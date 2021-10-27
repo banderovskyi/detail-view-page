@@ -1,4 +1,4 @@
-@import '../../../vars';
+@import '../../vars';
 
 .overlay {
   position: fixed;
@@ -12,7 +12,7 @@
   justify-content: center;
   z-index: $z-index-modal;
   display: none;
-  animation: fade-in 0.3s linear forwards;
+  animation: fade-in 0.1s linear forwards;
   &--active {
     display: flex;
   }
@@ -58,5 +58,17 @@
   &__sub-title {
     text-align: center;
     font-size: 12px;
+  }
+}
+
+.modal--with-content {
+  .modal__header {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .modal {
+    max-width: calc(100% - 30px);
   }
 }
