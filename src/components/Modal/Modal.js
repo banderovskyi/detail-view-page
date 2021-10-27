@@ -9,12 +9,20 @@ import { closeModal } from './ModalSlice';
 const Modal = (props) => {
   const dispatch = useDispatch();
 
-  const closeModalHandler = () => {
+  const closeModalHandler = (event) => {
     dispatch(closeModal());
   };
 
+  const closeModalOnOverlay = (event) => {
+    if (event.target === event.currentTarget) {
+      dispatch(closeModal());
+    }
+  };
+
   return (
-    <div className={`overlay ${props.isActive ? 'overlay--active' : ''}`}>
+    <div
+      className={`overlay ${props.isActive ? 'overlay--active' : ''}`}
+      onClick={closeModalOnOverlay}>
       <div
         className={`modal
         ${props.children ? 'modal--with-content' : ''}
