@@ -16,3 +16,44 @@
     display: block;
   }
 }
+
+.page-wrapper {
+  padding: 40px 0;
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__main {
+    width: calc(100% - #{$sidebar-width});
+    padding-right: 15px;
+  }
+  &__aside {
+    width: $sidebar-width;
+    padding-left: 15px;
+  }
+}
+
+@media screen and (max-width: $screen-xl - 1px) {
+  .page-wrapper {
+    &__main {
+      width: 60%;
+    }
+    &__aside {
+      width: 40%;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-md - 1px) {
+  .page-wrapper {
+    &__main {
+      width: 100%;
+      padding-right: 0;
+      margin-bottom: 30px;
+    }
+    &__aside {
+      width: 100%;
+      padding-left: 0;
+    }
+  }
+}
