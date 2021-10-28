@@ -12,9 +12,9 @@
   justify-content: center;
   z-index: $z-index-modal;
   display: none;
-  animation: fade-in 0.1s linear forwards;
   &--active {
     display: flex;
+    animation: fade-in 0.1s ease;
   }
 }
 

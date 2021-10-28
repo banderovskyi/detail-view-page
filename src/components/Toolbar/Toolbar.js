@@ -3,18 +3,21 @@ import PropTypes from 'prop-types';
 import './Toolbar.scss';
 import Button from '../UI/Button/Button';
 import { faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { openLoginModal, openContactModal } from '../Modal/ModalSlice';
+import { disableScroll } from '../../helpers/helpers';
 
 const Toolbar = (props) => {
   const dispatch = useDispatch();
 
   const favoriteClickHandler = () => {
     dispatch(openLoginModal());
+    disableScroll();
   };
 
   const contactClickHandler = () => {
     dispatch(openContactModal());
+    disableScroll();
   };
 
   return (

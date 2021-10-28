@@ -5,17 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { closeModal } from './ModalSlice';
+import { enableScroll } from '../../helpers/helpers';
 
 const Modal = (props) => {
   const dispatch = useDispatch();
 
   const closeModalHandler = (event) => {
     dispatch(closeModal());
+    enableScroll();
   };
 
   const closeModalOnOverlay = (event) => {
     if (event.target === event.currentTarget) {
       dispatch(closeModal());
+      enableScroll();
     }
   };
 
