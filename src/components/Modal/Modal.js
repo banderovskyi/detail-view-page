@@ -32,7 +32,8 @@ const Modal = (props) => {
   return (
     <div
       className={`overlay ${props.isActive ? 'overlay--active' : ''}`}
-      onClick={closeModalOnOverlay}>
+      onClick={closeModalOnOverlay}
+      id={props.id}>
       <div
         className={`modal
         ${props.children ? 'modal--with-content' : ''}
@@ -44,7 +45,7 @@ const Modal = (props) => {
           <div className="modal__title">{props.title}</div>
           {props.subtitle && <div className="modal__sub-title">{props.subtitle}</div>}
         </header>
-        <div className="modal__content">{props.children}</div>
+        {props.children && <div className="modal__content">{props.children}</div>}
       </div>
     </div>
   );
@@ -53,6 +54,7 @@ const Modal = (props) => {
 Modal.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  id: PropTypes.string,
   isActive: PropTypes.bool,
 };
 
