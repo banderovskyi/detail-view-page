@@ -1,20 +1,12 @@
 @import '../../vars';
 
 .toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 10px;
   padding: 30px;
   border-bottom: 1px solid $color-border;
-}
-
-.toolbar__item {
-  width: calc(50% - 10px);
-  margin-right: 20px;
-  margin-bottom: 20px;
-  &:nth-child(even) {
-    margin-right: 0;
-  }
 }
 
 .toolbar__btn {
