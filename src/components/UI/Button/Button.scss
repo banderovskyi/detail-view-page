@@ -1,0 +1,41 @@
+@import '../../../vars';
+
+.btn {
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 2px solid $color-secondary;
+  background-color: $color-secondary;
+  border-radius: 5px;
+  padding: 15px 25px;
+  color: $white;
+  outline: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  &:hover {
+    background-color: $color-primary;
+    border-color: $color-primary;
+  }
+  svg {
+    margin-right: 5px;
+  }
+  &--secondary {
+    background-color: $white;
+    color: $color-secondary;
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .btn {
+    padding: 10px 15px;
+  }
+}
+
+@media screen and (max-width: $screen-xs) {
+  .btn {
+    padding: 10px;
+  }
+}

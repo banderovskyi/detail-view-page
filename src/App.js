@@ -5,12 +5,18 @@ import Header from './components/Header/Header';
 import './App.scss';
 import Aside from './components/Aside/Aside';
 import Slider from './components/Slider/Slider';
+import Modal from './components/Modal/Modal';
+import { useSelector } from 'react-redux';
 
 function App() {
+  // Navigation variables
   const rootNode = useRef(null);
   const navigationSelecor = '.navigation__item';
   const [subMenuStatuses, setSubMenuStatuses] = useState([]);
+  // Modals variables
+  const modalStatuses = useSelector((state) => state.modals);
 
+  // Navigaition click handler
   useEffect(() => {
     const onClick = (e) => {
       const clickedNavigationItem = e.target.closest(navigationSelecor);
@@ -38,6 +44,15 @@ function App() {
         </div>
       </div>
       <Footer />
+      <Modal
+        isActive={modalStatuses.isLoginModalVisible}
+        title="Log in or create an account to save this listing to your favorites"
+        subtitle="Log in to your account to save your favorite listings for later.">
+        <p>Here will be register form</p>
+      </Modal>
+      <Modal isActive={modalStatuses.isContactModalVisible} title="Contact Us">
+        <p>Here will be contact form</p>
+      </Modal>
     </div>
   );
 }

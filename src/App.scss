@@ -57,3 +57,11 @@
     }
   }
 }
+
+.disable-scroll {
+  overflow: hidden;
+  padding-right: 15px;
+  @media screen and (max-width: $screen-md - 1px) {
+    padding-right: 0px;
+  }
+}

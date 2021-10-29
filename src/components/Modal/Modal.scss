@@ -1,0 +1,77 @@
+@import '../../vars';
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(204, 204, 204, 0.7);
+  z-index: $z-index-modal;
+  display: none;
+  &--active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fade-in 0.1s ease;
+  }
+}
+
+.modal {
+  background-color: $white;
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+.modal__close {
+  background-color: transparent;
+  border: none;
+  color: rgba($color: $black, $alpha: 0.3);
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.modal__header {
+  padding-top: 40px;
+  &::before {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: $color-secondary;
+    margin: 0 auto 10px auto;
+  }
+}
+
+.modal__title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: $color-primary;
+}
+
+.modal__sub-title {
+  text-align: center;
+  font-size: 12px;
+}
+
+.modal--with-content {
+  .modal__header {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .modal {
+    max-width: calc(100% - 30px);
+  }
+}
