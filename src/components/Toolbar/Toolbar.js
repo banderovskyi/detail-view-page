@@ -22,7 +22,7 @@ const Toolbar = (props) => {
       <div className="toolbar__item">
         <Button
           onClick={favoriteClickHandler}
-          className="toolbar__btn"
+          className="toolbar__btn toolbar__btn-favorite"
           text="Favorite"
           icon={faHeart}
           isSecondary={true}
@@ -31,7 +31,7 @@ const Toolbar = (props) => {
       <div className="toolbar__item">
         <Button
           onClick={contactClickHandler}
-          className="toolbar__btn"
+          className="toolbar__btn toolbar__btn-contact"
           text="Contact"
           icon={faEnvelope}
         />

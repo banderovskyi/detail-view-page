@@ -45,12 +45,13 @@ function App() {
       </div>
       <Footer />
       <Modal
+        id="favorite-modal"
         isActive={modalStatuses.isLoginModalVisible}
         title="Log in or create an account to save this listing to your favorites"
         subtitle="Log in to your account to save your favorite listings for later.">
         <p>Here will be register form</p>
       </Modal>
-      <Modal isActive={modalStatuses.isContactModalVisible} title="Contact Us">
+      <Modal id="contact-modal" isActive={modalStatuses.isContactModalVisible} title="Contact Us">
         <p>Here will be contact form</p>
       </Modal>
     </div>
