@@ -1,0 +1,28 @@
+@import '../../vars';
+
+.listing-title {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 15px;
+}
+
+.listing-title__address {
+  width: 100%;
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.listing-title__town {
+  margin-right: 5px;
+}
+
+.listing-title__state {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .listing-title__address {
+    font-size: 18px;
+  }
+}
