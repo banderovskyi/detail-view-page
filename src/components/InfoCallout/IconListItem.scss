@@ -1,0 +1,48 @@
+@import '../../vars';
+
+.icon-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  grid-row-gap: 10px;
+  margin-bottom: 15px;
+}
+
+.icon-list-item {
+  position: relative;
+  padding-left: 40px;
+  max-width: 120px;
+}
+
+.icon-list-item__icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  svg {
+    max-width: 40px;
+  }
+  svg,
+  path {
+    fill: $color-secondary;
+  }
+}
+
+.icon-list-item__title {
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.6;
+}
+
+.icon-list-item__value {
+  font-weight: 500;
+
+  font-size: 22px;
+  text-align: center;
+}
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .icon-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
