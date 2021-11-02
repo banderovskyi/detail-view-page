@@ -20,10 +20,23 @@ const InfoCallout = (props) => {
     <div className={`info-callout ${props.className ? props.className : ''} `}>
       {price && <div className="info-callout__price">${price}</div>}
       <ul className="info-callout__icon-list icon-list">
-        {beds && <IconListItem title="Beds" value={beds} icon={faBed} />}
-        {baths && <IconListItem title="Baths" value={baths} icon={faBath} />}
-        {acres && <IconListItem title="Acres" value={acres} icon={faRulerCombined} />}
-        {sqft && <IconListItem title="SqFt" value={sqft} icon={faBorderAll} />}
+        {beds && (
+          <IconListItem className="icon-list__item" title="Beds" value={beds} icon={faBed} />
+        )}
+        {baths && (
+          <IconListItem className="icon-list__item" title="Baths" value={baths} icon={faBath} />
+        )}
+        {acres && (
+          <IconListItem
+            className="icon-list__item"
+            title="Acres"
+            value={acres}
+            icon={faRulerCombined}
+          />
+        )}
+        {sqft && (
+          <IconListItem className="icon-list__item" title="SqFt" value={sqft} icon={faBorderAll} />
+        )}
       </ul>
       {status && (
         <div className="info-callout__status">
