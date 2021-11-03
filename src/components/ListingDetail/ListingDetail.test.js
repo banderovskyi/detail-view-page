@@ -10,11 +10,11 @@ beforeEach(() => {
 });
 
 describe('Listing description component', () => {
-  it('should be rendered with props class', () => {
-    expect(component.querySelector('.listing-detail-test')).toBeInTheDocument();
+  it('should be rendered', () => {
+    expect(component.querySelector('.listing-detail')).toBeInTheDocument();
   });
-  it('should render all parts', () => {
-    expect(component.querySelector('.listing-detail__title')).toBeInTheDocument();
-    expect(component.querySelector('.listing-detail__description')).toBeInTheDocument();
+  it('should render description card parts', () => {
+    expect(component.querySelector('.description-card__title')).toBeInTheDocument();
+    expect(component.querySelector('.description-card__text')).toBeInTheDocument();
   });
 });

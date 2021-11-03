@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Card from '../UI/Card/Card';
-import CardTitle from '../UI/CardTitle/CardTitle';
+import DescriptionCard from '../UI/DescriptionCard/DescriptionCard';
 
 const ListingDetail = (props) => {
   const [title] = useState('Listing Description');
@@ -10,15 +9,12 @@ const ListingDetail = (props) => {
   );
 
   return (
-    <Card className={`listing-detail ${props.className ? props.className : ''}`}>
-      <CardTitle className="listing-detail__title" title={title} />
-      <p className="listing-detail__description">{description}</p>
-    </Card>
+    <div className="listing-detail">
+      <DescriptionCard title={title} description={description} />
+    </div>
   );
 };
 
-ListingDetail.propTypes = {
-  className: PropTypes.string,
-};
+ListingDetail.propTypes = {};
 
 export default ListingDetail;
