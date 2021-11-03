@@ -9,7 +9,7 @@ const Aside = (props) => {
     <aside className={`aside ${props.className ? props.className : ''}`}>
       <Toolbar className="aside__toolbar" />
       <ListingTitle className="aside__listing-title" />
-      <ListingDetail className="aside__listing-detail" />
+      <ListingDetail />
     </aside>
   );
 };
