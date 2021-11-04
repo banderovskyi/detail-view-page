@@ -1,0 +1,19 @@
+@import '../../vars';
+
+.info-callout {
+  padding: 20px 15px;
+}
+
+.info-callout__price {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.info-callout__status {
+  font-size: 12px;
+  span {
+    font-weight: 500;
+    font-size: 18px;
+  }
+}
