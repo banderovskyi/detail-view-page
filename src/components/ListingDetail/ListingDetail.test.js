@@ -5,7 +5,7 @@ import ListingDetail from './ListingDetail';
 let component;
 
 beforeEach(() => {
-  const { container } = render(<ListingDetail className="listing-detail-test" />);
+  const { container } = render(<ListingDetail />);
   component = container;
 });
 
