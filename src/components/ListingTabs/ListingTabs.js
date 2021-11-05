@@ -8,8 +8,6 @@ import ListingTabCallout from './ListingTabCallout';
 const ListingTabs = (props) => {
   const [tabsInfo] = useState(tabsInfoObj);
 
-  console.log(tabsInfo);
-
   return (
     <div className={`listing-tabs ${props.className ? props.className : ''}`}>
       {tabsInfo?.map((tab, i) => (
