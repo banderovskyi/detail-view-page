@@ -1,0 +1,46 @@
+@import '../../vars';
+
+.listing-tab-callout {
+  padding: 10px 0;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.listing-tab-callout__title {
+  font-weight: 500;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.listing-tab-callout__list {
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 10px;
+}
+
+.listing-tab-callout__item-title {
+  font-size: 14px;
+  opacity: 0.6;
+  margin-right: 4px;
+}
+
+@media screen and (max-width: $mobile-nav-breakpoint) {
+  .listing-tab-callout__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: $screen-md - 1px) {
+  .listing-tab-callout__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .listing-tab-callout__list {
+    grid-template-columns: 1fr;
+  }
+}

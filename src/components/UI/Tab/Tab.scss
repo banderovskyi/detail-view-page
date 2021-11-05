@@ -69,3 +69,11 @@
     transform: rotate(90deg);
   }
 }
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .tab--active {
+    .tab__content {
+      padding: 10px 0px;
+    }
+  }
+}
