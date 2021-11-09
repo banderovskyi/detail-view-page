@@ -5,7 +5,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Tab = (props) => {
-  const [isActive, setIsActive] = useState(props.isActive || false);
+  const [isActive, setIsActive] = useState(props.isActiveByDefault || false);
 
   const clickHandler = () => {
     setIsActive((prevState) => !prevState);

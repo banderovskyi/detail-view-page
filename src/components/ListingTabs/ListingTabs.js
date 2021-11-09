@@ -14,10 +14,14 @@ const ListingTabs = (props) => {
         <Tab
           className="listing-tabs__item"
           title={tab.title}
-          isActive={i === 0 ? true : false}
-          key={Math.random()}>
+          isActiveByDefault={i === 0 ? true : false}
+          key={tab.title + i}>
           {tab?.groupFields.map((field, i) => (
-            <ListingTabCallout title={field.subTitle} items={field.fields} key={Math.random()} />
+            <ListingTabCallout
+              title={field.subTitle}
+              items={field.fields}
+              key={field.subTitle + i}
+            />
           ))}
         </Tab>
       ))}
