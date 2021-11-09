@@ -1,5 +1,8 @@
 @import '../../vars';
 
+$card-padding: 30px;
+$card-mobile-padding: 20px;
+
 .aside__info-callout {
   padding-top: 0;
 }
@@ -7,5 +10,34 @@
 .aside__card {
   margin-bottom: 25px;
   box-shadow: -11px 12px 77px -22px rgba(160, 178, 205, 0.4);
-  padding: 30px;
+  padding: $card-padding;
+}
+
+.aside__map {
+  padding: $card-padding 0;
+  box-shadow: -11px 12px 77px -22px rgba(160, 178, 205, 0.4);
+}
+
+.aside__title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  &--padding {
+    padding: 0 $card-padding;
+  }
+}
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .aside__card {
+    padding: $card-mobile-padding;
+  }
+  .aside__map {
+    padding: $card-mobile-padding 0;
+  }
+  .aside__title--padding {
+    padding: 0 $card-mobile-padding;
+  }
+  .aside__title {
+    font-size: 18px;
+  }
 }

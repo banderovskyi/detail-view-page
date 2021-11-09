@@ -50,7 +50,6 @@ describe('Header navigation component', () => {
       '.header-navigation-tested .navigation__mobile-menu-button_close'
     );
     fireEvent.click(mobileMenuOpen);
-    console.log(component.querySelector('.header-navigation-tested').className);
     expect(
       component.querySelector('.header-navigation-tested').className.includes('navigation--active')
     ).toBe(true);
