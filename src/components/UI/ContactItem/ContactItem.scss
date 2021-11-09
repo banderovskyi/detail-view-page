@@ -1,0 +1,26 @@
+@import '../../../vars';
+
+.contact-item {
+  display: flex;
+  align-items: center;
+}
+
+.contact-item__description {
+  margin-right: 10px;
+}
+
+.contact-item__icon {
+  margin-right: 5px;
+  svg,
+  path {
+    fill: $color-secondary;
+  }
+}
+
+.contact-item__value {
+  font-size: 18px;
+  font-weight: 500;
+  a {
+    @include link-hover(true);
+  }
+}

@@ -7,6 +7,7 @@ import ListingTitle from '../ListingTitle/ListingTitle';
 import ListingDetail from '../ListingDetail/ListingDetail';
 import ListingTabs from '../ListingTabs/ListingTabs';
 import ListingMap from '../ListingMap/ListingMap';
+import ListingContactUs from '../ListingContactUs/ListingContactUs';
 
 const Aside = (props) => {
   const [location] = useState(
@@ -24,6 +25,7 @@ const Aside = (props) => {
         <h3 className="aside__title aside__title--padding">Map Location</h3>
         <ListingMap location={location} />
       </div>
+      <ListingContactUs className="aside__card" />
     </aside>
   );
 };
