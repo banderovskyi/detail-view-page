@@ -1,11 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import IconListItem from './IconListItem';
+import { faBath } from '@fortawesome/free-solid-svg-icons';
 
 let component;
 
 beforeEach(() => {
-  const { container } = render(<IconListItem icon={{ icon: 'foo' }} title="foo" value="bar" />);
+  const { container } = render(<IconListItem icon={faBath} title="foo" value="bar" />);
   component = container;
 });
 
