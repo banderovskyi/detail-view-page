@@ -11,9 +11,17 @@ const ListingTabs = (props) => {
   return (
     <div className={`listing-tabs ${props.className ? props.className : ''}`}>
       {tabsInfo?.map((tab, i) => (
-        <Tab className="listing-tabs__item" title={tab.title} isActive={i === 0 ? true : false}>
+        <Tab
+          className="listing-tabs__item"
+          title={tab.title}
+          isActiveByDefault={i === 0 ? true : false}
+          key={tab.title + i}>
           {tab?.groupFields.map((field, i) => (
-            <ListingTabCallout title={field.subTitle} items={field.fields} />
+            <ListingTabCallout
+              title={field.subTitle}
+              items={field.fields}
+              key={field.subTitle + i}
+            />
           ))}
         </Tab>
       ))}
