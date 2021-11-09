@@ -9,12 +9,14 @@ const ListingDetail = (props) => {
   );
 
   return (
-    <div className="listing-detail">
+    <div className={`listing-detail ${props.className ? props.className : ''}`}>
       <DescriptionCard title={title} description={description} />
     </div>
   );
 };
 
-ListingDetail.propTypes = {};
+ListingDetail.propTypes = {
+  className: PropTypes.string,
+};
 
 export default ListingDetail;

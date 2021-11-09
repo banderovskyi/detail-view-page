@@ -1,0 +1,7 @@
+@import '../../vars';
+
+.listing-tabs__item {
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
