@@ -5,6 +5,7 @@
 }
 
 .listing-contact-us__desription {
+  @include small-text;
   margin-bottom: 20px;
 }
 

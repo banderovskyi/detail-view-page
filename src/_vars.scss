@@ -53,3 +53,8 @@ $screen-xl: 1440px;
     opacity: 0;
   }
 }
+
+@mixin small-text {
+  font-size: 13px;
+  opacity: 0.67;
+}

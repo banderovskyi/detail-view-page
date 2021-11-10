@@ -46,7 +46,7 @@ const ListingContactUs = (props) => {
         contact="617-233-5800"
         href="tel:617-233-5800"
       />
-      <p className="listing-contact-us__desription text-small">
+      <p className="listing-contact-us__desription">
         Or, when you are ready, use this form to request more information or schedule a showing with
         a Luxury Residential Group Agent
       </p>
