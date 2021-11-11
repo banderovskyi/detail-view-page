@@ -18,7 +18,9 @@ const ListingContactUs = (props) => {
     },
   ]);
   const [activeTabContent, setActiveTabContent] = useState(
-    tabs[0].content || <p className="text-small">Something went wrong</p>
+    tabs[0]?.content || (
+      <p className="listing-contact-us__warning-message">Contact forms are not available now</p>
+    )
   );
 
   const handleTabClick = (content, activeTitle) => {
