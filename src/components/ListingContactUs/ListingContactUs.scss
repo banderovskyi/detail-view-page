@@ -1,0 +1,45 @@
+@import '../../vars';
+
+.listing-contact-us__contact-item {
+  margin-bottom: 10px;
+}
+
+.listing-contact-us__desription {
+  @include small-text;
+  margin-bottom: 20px;
+}
+
+.listing-contact-us__warning-message {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid $color-border;
+  @include small-text;
+}
+
+.listing-contact-us__tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 20px;
+}
+
+.listing-contact-us__tab {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  padding: 10px 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid $color-border;
+  opacity: 0.5;
+  transition: border-color 0.3s, opacity 0.3s, background-color 0.3s;
+  background-color: $color-border;
+  &--active {
+    border: 1px solid $color-border;
+    border-bottom-color: transparent;
+    opacity: 1;
+    background-color: transparent;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
