@@ -24,4 +24,21 @@
 
 .form__button {
   width: 100%;
+  &--loading {
+    svg {
+      animation: spin 2s linear infinite;
+    }
+  }
+  &--loading {
+    background-color: $color-loading;
+    border-color: $color-loading;
+  }
+  &--success {
+    background-color: $color-success;
+    border-color: $color-success;
+  }
+  &--error {
+    background-color: $color-error;
+    border-color: $color-error;
+  }
 }

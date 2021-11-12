@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../Forms.scss';
 import { useInput } from '../inputHook';
 import Button from '../../UI/Button/Button';
+import axios from 'axios';
+import { faCheck, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const ContactUsForm = (props) => {
   const fullName = useInput('');
@@ -13,10 +15,48 @@ const ContactUsForm = (props) => {
       ? `I would like to know more about ${props.address}`
       : 'I would like to know more about this property'
   );
+  const [isSuccess, setisSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const [buttonText, setButtonText] = useState('Send');
+  const [buttonIcon, setButtonIcon] = useState(null);
+  const [buttonClass, setButtonClass] = useState('');
+  useEffect(() => {
+    if (isSuccess) {
+      setButtonText('Success');
+      setButtonIcon(faCheck);
+      setButtonClass('form__button--success');
+    } else if (isError) {
+      setButtonText('Something went wrong');
+      setButtonIcon(faTimes);
+      setButtonClass('form__button--error');
+    } else if (isLoading) {
+      setButtonText('Sending');
+      setButtonIcon(faSpinner);
+      setButtonClass('form__button--loading');
+    }
+  }, [isLoading, isError, isSuccess]);
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(event.data);
+    setIsLoading(true);
+    axios
+      .post('https://jsonplaceholder.typicode.com/posts', {
+        fullName: fullName,
+        email: email,
+        phone: phone,
+        message: message,
+      })
+      .then(function (response) {
+        console.log(response);
+        setIsLoading(false);
+        setisSuccess(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+        setIsError(true);
+      });
   };
 
   return (
@@ -71,7 +111,13 @@ const ContactUsForm = (props) => {
           className="form__input form__textarea"
           {...message.bind}></textarea>
       </div>
-      <Button type="submit" className="form__button" text="Send" />
+      <Button
+        type="submit"
+        className={`form__button ${buttonClass}`}
+        isDisabled={isError || isSuccess || isLoading ? true : false}
+        text={buttonText}
+        icon={buttonIcon}
+      />
     </form>
   );
 };

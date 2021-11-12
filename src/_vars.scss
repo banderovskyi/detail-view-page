@@ -12,6 +12,9 @@ $fsz-small: 12px;
 $color-primary: #032757;
 $color-secondary: #4fbeff;
 $color-border: #ebebeb;
+$color-success: #00cc33;
+$color-loading: #9ebe0b;
+$color-error: #db290a;
 $white: #ffffff;
 $black: #131313;
 
@@ -51,6 +54,13 @@ $screen-xl: 1440px;
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 

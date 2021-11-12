@@ -12,7 +12,7 @@
   cursor: pointer;
   letter-spacing: 0.5px;
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-  &:hover {
+  &:hover:enabled {
     background-color: $color-primary;
     border-color: $color-primary;
   }
@@ -22,7 +22,7 @@
   &--secondary {
     background-color: $white;
     color: $color-secondary;
-    &:hover {
+    &:hover:enabled {
       color: $white;
     }
   }
