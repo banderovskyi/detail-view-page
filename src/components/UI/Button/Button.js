@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Button = (props) => {
   return (
     <button
+      type={props.type}
       onClick={props.onClick}
       className={`btn ${props.isSecondary ? 'btn--secondary' : ''} ${
         props.className ? props.className : ''
@@ -21,6 +22,7 @@ Button.propTypes = {
   text: PropTypes.string,
   icon: PropTypes.object,
   isSecondary: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export default Button;

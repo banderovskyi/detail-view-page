@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import './ListingContactUs.scss';
 import ContactItem from '../UI/ContactItem/ContactItem';
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import ContactUsForm from '../Forms/ContactUsForm/ContactUsForm';
 
 const ListingContactUs = (props) => {
   const [tabs, setTabs] = useState([
     {
       title: 'Contact Us',
       isActive: true,
-      content: <div>Contact Us Form Component</div>,
+      content: <ContactUsForm id="aside-contact" address="59 High Street Brookline MA 02445" />,
     },
     {
       title: 'Schedule a Visit',
