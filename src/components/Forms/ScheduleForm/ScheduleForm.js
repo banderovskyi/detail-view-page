@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useInput } from '../inputHook';
-import { faCheck, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 import Button from '../../UI/Button/Button';
+import { useFormStatus } from '../formStatusHook';
 
 const ScheduleForm = (props) => {
   const fullName = useInput('');
@@ -16,52 +15,23 @@ const ScheduleForm = (props) => {
       ? `I would like to schedule a viewing for ${props.address}`
       : 'I would like to schedule a viewing for this property'
   );
-  const [isSuccess, setisSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  const [buttonText, setButtonText] = useState('Send');
-  const [buttonIcon, setButtonIcon] = useState(null);
-  const [buttonClass, setButtonClass] = useState('');
-  useEffect(() => {
-    if (isSuccess) {
-      setButtonText('Success');
-      setButtonIcon(faCheck);
-      setButtonClass('form__button--success');
-    } else if (isError) {
-      setButtonText('Something went wrong');
-      setButtonIcon(faTimes);
-      setButtonClass('form__button--error');
-    } else if (isLoading) {
-      setButtonText('Sending');
-      setButtonIcon(faSpinner);
-      setButtonClass('form__button--loading');
-    }
-  }, [isLoading, isError, isSuccess]);
-
-  const formSubmitHandler = (event) => {
-    event.preventDefault();
-    setIsLoading(true);
-    axios
-      .post('https://jsonplaceholder.typicode.com/posts', {
-        fullName: fullName,
-        email: email,
-        phone: phone,
-        message: message,
-      })
-      .then(function (response) {
-        console.log(response);
-        setIsLoading(false);
-        setisSuccess(true);
-      })
-      .catch(function (error) {
-        console.log(error);
-        setIsError(true);
-      });
+  const formData = {
+    fullName: fullName.value,
+    email: email.value,
+    phone: phone.value,
+    date: date.value,
+    time: time.value,
+    message: message.value,
   };
+  const formStatus = useFormStatus(
+    'https://jsonplaceholder.typicode.com/posts',
+    formData,
+    { text: 'Schedule A Visit' },
+    {}
+  );
 
   return (
-    <form onSubmit={formSubmitHandler} className="form" id={props.id}>
+    <form onSubmit={formStatus.submitHandler} className="form" id={props.id}>
       <div className="form__field">
         <label htmlFor={props.id ? `${props.id}-full-name` : 'full-name'} className="sr-only">
           Full Name
@@ -143,13 +113,7 @@ const ScheduleForm = (props) => {
           className="form__input form__textarea"
           {...message.bind}></textarea>
       </div>
-      <Button
-        type="submit"
-        className={`form__button ${buttonClass}`}
-        isDisabled={isError || isSuccess || isLoading ? true : false}
-        text={buttonText}
-        icon={buttonIcon}
-      />
+      <Button type="submit" {...formStatus.bindButton} />
     </form>
   );
 };
