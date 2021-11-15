@@ -33,6 +33,8 @@
   opacity: 0.5;
   transition: border-color 0.3s, opacity 0.3s, background-color 0.3s;
   background-color: $color-border;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   &--active {
     border: 1px solid $color-border;
     border-bottom-color: transparent;
