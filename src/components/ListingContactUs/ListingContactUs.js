@@ -4,6 +4,7 @@ import './ListingContactUs.scss';
 import ContactItem from '../UI/ContactItem/ContactItem';
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import ContactUsForm from '../Forms/ContactUsForm/ContactUsForm';
+import ScheduleForm from '../Forms/ScheduleForm/ScheduleForm';
 
 const ListingContactUs = (props) => {
   const [tabs, setTabs] = useState([
@@ -15,7 +16,7 @@ const ListingContactUs = (props) => {
     {
       title: 'Schedule a Visit',
       isActive: false,
-      content: <div>Schedule a Visit Form Component</div>,
+      content: <ScheduleForm id="aside-schedule" address="59 High Street Brookline MA 02445" />,
     },
   ]);
   const [activeTabContent, setActiveTabContent] = useState(

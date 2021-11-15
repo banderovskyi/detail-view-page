@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import '../Forms.scss';
 import { useInput } from '../inputHook';
-import Button from '../../UI/Button/Button';
-import axios from 'axios';
 import { faCheck, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import Button from '../../UI/Button/Button';
 
-const ContactUsForm = (props) => {
+const ScheduleForm = (props) => {
   const fullName = useInput('');
   const email = useInput('');
   const phone = useInput('');
+  const date = useInput('');
+  const time = useInput('');
   const message = useInput(
     props.address
-      ? `I would like to know more about ${props.address}`
-      : 'I would like to know more about this property'
+      ? `I would like to schedule a viewing for ${props.address}`
+      : 'I would like to schedule a viewing for this property'
   );
   const [isSuccess, setisSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -103,6 +104,35 @@ const ContactUsForm = (props) => {
         />
       </div>
       <div className="form__field">
+        <label htmlFor={props.id ? `${props.id}-date` : 'date'} className="sr-only">
+          Date
+        </label>
+        <input
+          type="date"
+          name="Date"
+          id={props.id ? `${props.id}-date` : 'date'}
+          placeholder="Date*"
+          className="form__input"
+          {...date.bind}
+          required
+        />
+      </div>
+      <div className="form__field">
+        <label htmlFor={props.id ? `${props.id}-time` : 'time'} className="sr-only">
+          Time
+        </label>
+        <input
+          type="time"
+          name="Time"
+          id={props.id ? `${props.id}-time` : 'time'}
+          placeholder="Time*"
+          className="form__input"
+          {...time.bind}
+          required
+        />
+      </div>
+
+      <div className="form__field">
         <label htmlFor={props.id ? `${props.id}-message` : 'message'} className="sr-only">
           Message
         </label>
@@ -124,9 +154,9 @@ const ContactUsForm = (props) => {
   );
 };
 
-ContactUsForm.propTypes = {
+ScheduleForm.propTypes = {
   id: PropTypes.string,
   address: PropTypes.string,
 };
 
-export default ContactUsForm;
+export default ScheduleForm;
