@@ -2,20 +2,15 @@ import { useState, useEffect } from 'react';
 import { faCheck, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-export function useFormStatus(
-  apiLink = '',
-  formData = {},
-  buttonStatus = { text: 'Submit', icon: null, class: '' },
-  formsStatus = { isSuccess: false, isLoading: false, isError: false }
-) {
+export function useFormStatus(apiLink = '', formData = {}, buttonStatus, formsStatus) {
   // Setting a statuses for the form, depending on the statuses button information will be changed
   const [isSuccess, setIsSuccess] = useState(formsStatus.isSuccess);
   const [isLoading, setIsLoading] = useState(formsStatus.isLoading);
   const [isError, setIsError] = useState(formsStatus.isError);
   // Setting default button states
-  const [buttonText, setButtonText] = useState(buttonStatus.text);
-  const [buttonIcon, setButtonIcon] = useState(buttonStatus.icon);
-  const [buttonClass, setButtonClass] = useState(buttonStatus.class);
+  const [buttonText, setButtonText] = useState(buttonStatus.text || 'Submit');
+  const [buttonIcon, setButtonIcon] = useState(buttonStatus.icon || null);
+  const [buttonClass, setButtonClass] = useState(buttonStatus.class || '');
 
   // Changing a button information depending of form status
   useEffect(() => {
@@ -50,12 +45,13 @@ export function useFormStatus(
       .catch(function (error) {
         console.log(error);
         setIsError(true);
+        isLoading(false);
       });
   };
 
   return {
     submitHandler,
-    bindButton: {
+    button: {
       text: buttonText,
       icon: buttonIcon,
       className: `form__button ${buttonClass ? buttonClass : ''}`,
@@ -71,9 +67,6 @@ export function useFormStatus(
     },
     setLoading: (newValue) => {
       setIsLoading(newValue);
-    },
-    setError: (newValue) => {
-      setIsError(newValue);
     },
   };
 }

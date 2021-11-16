@@ -113,7 +113,13 @@ const ScheduleForm = (props) => {
           className="form__input form__textarea"
           {...message.bind}></textarea>
       </div>
-      <Button type="submit" {...formStatus.bindButton} />
+      <Button
+        type="submit"
+        text={formStatus.button.text}
+        icon={formStatus.button.icon}
+        className={formStatus.button.className}
+        isDisabled={formStatus.button.isDisabled}
+      />
     </form>
   );
 };
