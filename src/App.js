@@ -7,6 +7,7 @@ import Aside from './components/Aside/Aside';
 import Slider from './components/Slider/Slider';
 import Modal from './components/Modal/Modal';
 import { useSelector } from 'react-redux';
+import ContactUsForm from './components/Forms/ContactUsForm/ContactUsForm';
 
 function App() {
   // Navigation variables
@@ -52,7 +53,7 @@ function App() {
         <p>Here will be register form</p>
       </Modal>
       <Modal id="contact-modal" isActive={modalStatuses.isContactModalVisible} title="Contact Us">
-        <p>Here will be contact form</p>
+        <ContactUsForm id="modal-contact" address="59 High Street Brookline MA 02445" />
       </Modal>
     </div>
   );
