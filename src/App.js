@@ -8,6 +8,8 @@ import Slider from './components/Slider/Slider';
 import Modal from './components/Modal/Modal';
 import { useSelector } from 'react-redux';
 import ContactUsForm from './components/Forms/ContactUsForm/ContactUsForm';
+import LogInForm from './components/Forms/LogInFrom/LogInForm';
+import SignInForm from './components/Forms/SignInForm/SignInForm';
 
 function App() {
   // Navigation variables
@@ -50,10 +52,16 @@ function App() {
         isActive={modalStatuses.isLoginModalVisible}
         title="Log in or create an account to save this listing to your favorites"
         subtitle="Log in to your account to save your favorite listings for later.">
-        <p>Here will be register form</p>
+        <LogInForm id="modal-login" />
       </Modal>
       <Modal id="contact-modal" isActive={modalStatuses.isContactModalVisible} title="Contact Us">
         <ContactUsForm id="modal-contact" address="59 High Street Brookline MA 02445" />
+      </Modal>
+      <Modal
+        id="modal-signup"
+        isActive={modalStatuses.isSignInModalVisible}
+        title="Sign up to save this favorite">
+        <SignInForm id="modal-sign-up" />
       </Modal>
     </div>
   );

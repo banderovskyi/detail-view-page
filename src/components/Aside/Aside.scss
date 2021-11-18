@@ -28,6 +28,14 @@ $card-mobile-padding: 20px;
   }
 }
 
+.aside__feed-info {
+  opacity: 0.7;
+  font-size: 12px;
+  em {
+    font-style: italic;
+  }
+}
+
 @media screen and (max-width: $screen-sm - 1px) {
   .aside__card {
     padding: $card-mobile-padding;
