@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import ContactUsForm from './components/Forms/ContactUsForm/ContactUsForm';
 import LogInForm from './components/Forms/LogInFrom/LogInForm';
 import SignInForm from './components/Forms/SignInForm/SignInForm';
+import MoreLikeThis from './components/MoreLikeThis/MoreLikeThis';
 
 function App() {
   // Navigation variables
@@ -45,6 +46,7 @@ function App() {
             <Aside className="page-wrapper__aside" />
           </div>
         </div>
+        <MoreLikeThis />
       </div>
       <Footer />
       <Modal
