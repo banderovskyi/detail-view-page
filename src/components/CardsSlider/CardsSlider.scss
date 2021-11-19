@@ -2,19 +2,65 @@
 
 .cards-slider {
   position: relative;
-  .slider__button {
-    padding: 20px;
-    background-color: $white;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-  }
 }
 
 .cards-slider__item {
   padding: 30px 10px;
+  .listing-card {
+    height: 100%;
+  }
+}
+
+.cards-slider__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  background-color: $white;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  &:hover {
+    opacity: 1;
+  }
+  svg {
+    max-width: 40%;
+  }
+  svg path {
+    color: $color-primary;
+  }
+}
+
+.cards-slider__prev-button {
+  left: 0px;
+}
+
+.cards-slider__next-button {
+  right: 0px;
+}
+
+@media screen and (max-width: $screen-sm - 1px) {
+  .cards-slider {
+    margin: 0px;
+  }
+  .cards-slider__button {
+    width: 40px;
+    height: 40px;
+  }
+  .cards-slider__prev-button {
+    left: -13px;
+  }
+
+  .cards-slider__next-button {
+    right: -13px;
+  }
 }

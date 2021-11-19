@@ -12,37 +12,37 @@ const CardsSlider = (props) => {
   const tabletBreakpoint = 922;
   const mobileBreakpoint = 768;
 
-  const cardsCountInit = {
-    fullHd: 4,
-    desktop: 3,
+  const cardsCountNumber = {
+    desktop: 4,
+    laptop: 3,
     tablet: 2,
     mobile: 1,
   };
-  const [cardsCount, setCardsCount] = useState(cardsCountInit.fullHd);
+  const [cardsCount, setCardsCount] = useState(cardsCountNumber.desktop);
 
   const [itemsLength] = useState(props.items.length);
 
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
-  const [mainWrapperWidth, setMainWrapperWidth] = useState(0);
+  const [windowWidth, setwindowWidth] = useState(0);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const [sliderWrapperWidth, setSliderWrapperWidth] = useState(0);
   const [itemNodeWidth, setItemNodeWidth] = useState(0);
-  const [transformWidth, setTransformWidth] = useState(0);
 
   const $sliderWrapper = useRef(null);
 
   const initSliderSizes = () => {
-    const nodeWidth = $sliderWrapper.current.clientWidth;
-    setItemNodeWidth(nodeWidth / cardsCount);
-    setMainWrapperWidth((nodeWidth / cardsCount) * itemsLength);
-    setTransformWidth(nodeWidth / cardsCount);
-    if (window.innerWidth < mobileBreakpoint) {
-      setCardsCount(cardsCountInit.mobile);
-    } else if (mobileBreakpoint < window.innerWidth && window.innerWidth < tabletBreakpoint) {
-      setCardsCount(cardsCountInit.tablet);
-    } else if (tabletBreakpoint < window.innerWidth && window.innerWidth < laptopBreakpoint) {
-      setCardsCount(cardsCountInit.desktop);
+    setwindowWidth(window.innerWidth);
+    if (windowWidth < mobileBreakpoint) {
+      setCardsCount(cardsCountNumber.mobile);
+    } else if (mobileBreakpoint < windowWidth && windowWidth < tabletBreakpoint) {
+      setCardsCount(cardsCountNumber.tablet);
+    } else if (tabletBreakpoint < windowWidth && windowWidth < laptopBreakpoint) {
+      setCardsCount(cardsCountNumber.laptop);
     } else {
-      setCardsCount(cardsCountInit.fullHd);
+      setCardsCount(cardsCountNumber.desktop);
     }
+    const wrapperWidth = $sliderWrapper.current.clientWidth;
+    setItemNodeWidth(wrapperWidth / cardsCount);
+    setSliderWrapperWidth((wrapperWidth / cardsCount) * itemsLength);
   };
 
   useEffect(() => {
@@ -50,71 +50,50 @@ const CardsSlider = (props) => {
     window.addEventListener('resize', () => {
       initSliderSizes();
     });
-
     return () => {
       window.removeEventListener('resize', initSliderSizes);
     };
-  }, [activeItemIndex]);
+  }, [cardsCount, windowWidth]);
 
   const nextClickHandler = () => {
-    console.log('NEXT CLICK', activeItemIndex);
-    setActiveItemIndex((prevIndex) => {
-      if (prevIndex >= itemsLength - 1) {
+    setActiveCardIndex((prevIndex) => {
+      if (!(activeCardIndex < itemsLength - cardsCount)) {
         return 0;
       }
       return prevIndex + 1;
     });
-    setTransformWidth((prevValue) => {
-      const newTransformWidth = prevValue + itemNodeWidth;
-      console.log(newTransformWidth, mainWrapperWidth, itemNodeWidth, prevValue);
-      // if (newTransformWidth >= mainWrapperWidth) {
-      //   return 0;
-      // }
-      return newTransformWidth;
-    });
   };
 
   const prevClickHandler = () => {
-    console.log('PREV CLICK', activeItemIndex);
-    setActiveItemIndex((prevIndex) => {
+    setActiveCardIndex((prevIndex) => {
+      console.log(prevIndex);
       if (prevIndex <= 0) {
-        return itemsLength - 1;
+        return itemsLength - cardsCount;
       }
       return prevIndex - 1;
-    });
-    setTransformWidth((prevValue) => {
-      const newTransformWidth = prevValue - itemNodeWidth;
-      if (newTransformWidth < 0) {
-        console.log('Click on tthe firts', newTransformWidth, prevValue);
-
-        return mainWrapperWidth - itemNodeWidth;
-      }
-      return newTransformWidth;
     });
   };
 
   return (
     <div className={`cards-slider ${props.className ? props.className : ''}`} ref={$sliderWrapper}>
-      <div className="slider__buttons">
-        <button onClick={prevClickHandler} className="slider__button slider__prev-button">
+      <div className="cards-slider__buttons">
+        <button
+          onClick={prevClickHandler}
+          className="cards-slider__button cards-slider__prev-button">
           <FontAwesomeIcon icon={faChevronLeft} size="2x" />
         </button>
-        <button onClick={nextClickHandler} className="slider__button slider__next-button">
+        <button
+          onClick={nextClickHandler}
+          className="cards-slider__button cards-slider__next-button">
           <FontAwesomeIcon icon={faChevronRight} size="2x" />
         </button>
       </div>
       <SliderWrapper
-        mainWrapperWidth={mainWrapperWidth}
-        transformWidth={
-          activeItemIndex < itemsLength - cardsCount
-            ? transformWidth
-            : mainWrapperWidth - itemNodeWidth
-        }>
-        >
+        mainWrapperWidth={sliderWrapperWidth}
+        transformWidth={itemNodeWidth * activeCardIndex}>
         {props?.items.map((item) => (
           <div className="cards-slider__item" key={item.mls} style={{ width: itemNodeWidth }}>
             <ListingCard
-              className=""
               link={item.link}
               img={item.thumb}
               imgAlt={item.imgAlt}
