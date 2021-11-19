@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import './MoreLikeThis.scss';
 import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,7 +28,5 @@ const MoreLikeThis = (props) => {
     </div>
   );
 };
-
-MoreLikeThis.propTypes = {};
 
 export default MoreLikeThis;
