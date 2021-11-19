@@ -107,7 +107,7 @@ const ScheduleForm = (props) => {
           Message
         </label>
         <textarea
-          name="message"
+          name="Message"
           id={props.id ? `${props.id}-message` : 'message'}
           placeholder="Message"
           className="form__input form__textarea"

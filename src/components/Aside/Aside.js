@@ -8,6 +8,7 @@ import ListingDetail from '../ListingDetail/ListingDetail';
 import ListingTabs from '../ListingTabs/ListingTabs';
 import ListingMap from '../ListingMap/ListingMap';
 import ListingContactUs from '../ListingContactUs/ListingContactUs';
+import ListingSubsctibe from '../ListingSubsctibe/ListingSubsctibe';
 
 const Aside = (props) => {
   const [location] = useState(
@@ -26,6 +27,19 @@ const Aside = (props) => {
         <ListingMap location={location} />
       </div>
       <ListingContactUs className="aside__card" />
+      <ListingSubsctibe className="aside__card" />
+      <div className="aside__feed-info">
+        The property listing data and information, or the Images, set forth herein were provided to{' '}
+        <em>MLS Property Information Network</em>, Inc. from third party sources, including sellers,
+        lessors and public records, and were compiled by<em> MLS Property Information Network</em>,
+        Inc. The property listing data and information, and the Images, are for the personal,
+        non-commercial use of consumers having a good faith interest in purchasing or leasing listed
+        properties of the type displayed to them and may not be used for any purpose other than to
+        identify prospective properties which such consumers may have a good faith interest in
+        purchasing or leasing. <em>MLS Property Information Network</em>, Inc. and its subscribers
+        disclaim any and all representations and warranties as to the accuracy of the property
+        listing data and information, or as to the accuracy of any of the Images, set forth herein.
+      </div>
     </aside>
   );
 };

@@ -1,5 +1,9 @@
 @import '../../vars';
 
+.form {
+  margin-top: 20px;
+}
+
 .form__field {
   margin-bottom: 10px;
 }
@@ -40,5 +44,46 @@
   &--error {
     background-color: $color-error;
     border-color: $color-error;
+  }
+}
+
+.form__disclaimer {
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.form__forgot-password-link {
+  @include link-hover();
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  color: $black;
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 20px;
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+.form__create-account {
+  margin-top: 20px;
+  text-align: center;
+  border-top: 1px solid $color-border;
+  padding-top: 20px;
+}
+
+.form__create-account-text {
+  font-size: 14px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.form__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .form__field {
+    width: 49%;
   }
 }

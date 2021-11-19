@@ -5,25 +5,17 @@ import { useInput } from '../inputHook';
 import Button from '../../UI/Button/Button';
 import { useFormStatus } from '../formStatusHook';
 
-const ContactUsForm = (props) => {
+const SubscribeFrom = (props) => {
   const fullName = useInput('');
   const email = useInput('');
-  const phone = useInput('');
-  const message = useInput(
-    props.address
-      ? `I would like to know more about ${props.address}`
-      : 'I would like to know more about this property'
-  );
   const formData = {
-    fullName: fullName.value,
-    email: email.value,
-    phone: phone.value,
-    message: message.value,
+    fullName: fullName,
+    email: email,
   };
   const formStatus = useFormStatus(
     'https://jsonplaceholder.typicode.com/posts',
     formData,
-    { text: 'Send' },
+    { text: 'Subscribe' },
     {}
   );
 
@@ -57,30 +49,6 @@ const ContactUsForm = (props) => {
           required
         />
       </div>
-      <div className="form__field">
-        <label htmlFor={props.id ? `${props.id}-phone` : 'phone'} className="sr-only">
-          Phone
-        </label>
-        <input
-          type="tel"
-          name="Phone"
-          id={props.id ? `${props.id}-phone` : 'phone'}
-          placeholder="Phone"
-          className="form__input"
-          {...phone.bind}
-        />
-      </div>
-      <div className="form__field">
-        <label htmlFor={props.id ? `${props.id}-message` : 'message'} className="sr-only">
-          Message
-        </label>
-        <textarea
-          name="Message"
-          id={props.id ? `${props.id}-message` : 'message'}
-          placeholder="Message"
-          className="form__input form__textarea"
-          {...message.bind}></textarea>
-      </div>
       <Button
         type="submit"
         text={formStatus.button.text}
@@ -88,13 +56,15 @@ const ContactUsForm = (props) => {
         className={formStatus.button.className}
         isDisabled={formStatus.button.isDisabled}
       />
+      <p className="form__disclaimer">
+        We will never spam you or sell your details. You can unsubscribe whenever you like.
+      </p>
     </form>
   );
 };
 
-ContactUsForm.propTypes = {
+SubscribeFrom.propTypes = {
   id: PropTypes.string,
-  address: PropTypes.string,
 };
 
-export default ContactUsForm;
+export default SubscribeFrom;
