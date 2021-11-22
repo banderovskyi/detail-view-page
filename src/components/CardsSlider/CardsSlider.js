@@ -33,7 +33,7 @@ const CardsSlider = (props) => {
     setwindowWidth(window.innerWidth);
     if (windowWidth < mobileBreakpoint) {
       setCardsCount(cardsCountNumber.mobile);
-    } else if (mobileBreakpoint < windowWidth && windowWidth < tabletBreakpoint) {
+    } else if (mobileBreakpoint <= windowWidth && windowWidth < tabletBreakpoint) {
       setCardsCount(cardsCountNumber.tablet);
     } else if (tabletBreakpoint < windowWidth && windowWidth < laptopBreakpoint) {
       setCardsCount(cardsCountNumber.laptop);

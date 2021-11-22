@@ -11,6 +11,7 @@ import ContactUsForm from './components/Forms/ContactUsForm/ContactUsForm';
 import LogInForm from './components/Forms/LogInFrom/LogInForm';
 import SignInForm from './components/Forms/SignInForm/SignInForm';
 import MoreLikeThis from './components/MoreLikeThis/MoreLikeThis';
+import ListedBy from './components/ListedBy/ListedBy';
 
 function App() {
   // Navigation variables
@@ -47,6 +48,7 @@ function App() {
           </div>
         </div>
         <MoreLikeThis />
+        <ListedBy />
       </div>
       <Footer />
       <Modal
