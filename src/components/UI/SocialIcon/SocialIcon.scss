@@ -1,0 +1,17 @@
+@import '../../../vars';
+
+.social-link {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-secondary;
+  color: $color-secondary;
+  border-radius: 50%;
+  transition: color 0.3s, border-color 0.3s;
+  &:hover {
+    color: $color-primary;
+    border-color: $color-primary;
+  }
+}

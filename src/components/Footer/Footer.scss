@@ -1,5 +1,45 @@
 @import '../../vars';
 
-// .header {
-//   background-color: $color-secondary;
-// }
+.footer {
+  border-top: 1px solid $color-border;
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    width: 116px;
+    height: 73px;
+    background-size: contain;
+    background-image: url('footer-icon.png');
+    display: block;
+    position: absolute;
+    right: 40px;
+    top: -38px;
+  }
+}
+
+.footer__main {
+  padding: 60px 0;
+}
+
+.footer__logo {
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+.footer__nav {
+  margin-top: 30px;
+}
+
+.footer__footer-social {
+  margin-top: 30px;
+}
+
+.footer-social__list {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, max(30px));
+  column-gap: 15px;
+  row-gap: 15px;
+}
