@@ -16,10 +16,10 @@ describe('ListingContactUs component', () => {
     expect(component.querySelector('.contact-us-test')).toBeInTheDocument();
   });
 
-  it('should renter a contact item', () => {
+  it('should render a contact item', () => {
     expect(component.querySelector('.listing-contact-us__contact-item')).toBeInTheDocument();
   });
-  it('should renter tabs', () => {
+  it('should render tabs', () => {
     expect(component.querySelector('.listing-contact-us__tabs')).toBeInTheDocument();
   });
   it('should change tabs content', () => {
