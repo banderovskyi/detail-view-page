@@ -28,7 +28,7 @@ const Tab = (props) => {
 Tab.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
-  isActive: PropTypes.bool,
+  isActiveByDefault: PropTypes.bool,
 };
 
 export default Tab;
