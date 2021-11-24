@@ -13,7 +13,7 @@ const SubscribeFrom = (props) => {
     email: email,
   };
   const formStatus = useFormStatus(
-    'https://jsonplaceholder.typicode.com/posts',
+    'https://reqres.in/api/users',
     formData,
     { text: 'Subscribe' },
     {}

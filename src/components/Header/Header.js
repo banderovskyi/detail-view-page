@@ -72,15 +72,26 @@ const Header = (props) => {
   const [headerLinks] = useState([
     { title: 'My Favorites', link: '/listings/favorite/' },
     { title: 'Contact', link: '/contact-us/' },
-    { title: 'Log In', link: '#' },
-    { title: 'Sign Up', link: '#' },
   ]);
   const [contacts] = useState([{ title: '132-132-1324', link: 'tel:1321321324' }]);
   const navItemsNumber = navItems.length ? navItems.length : 0;
-  const subMenuStatuses = new Array(navItemsNumber).fill(false);
+  const navigationSelecor = '.navigation__item';
+  const [subMenuStatuses, setSubMenuStatuses] = useState(new Array(navItemsNumber).fill(false));
 
   useEffect(() => {
-    props.changeSubMenuStatuses(subMenuStatuses);
+    setSubMenuStatuses(subMenuStatuses);
+    // Navigaition click handler
+    const onClick = (e) => {
+      const clickedNavigationItem = e.target.closest(navigationSelecor);
+      if (!clickedNavigationItem) {
+        setSubMenuStatuses((prevState) => {
+          return prevState.map((item) => (item = false));
+        });
+      }
+    };
+    document.addEventListener('click', onClick);
+
+    return () => document.removeEventListener('click', onClick);
   }, []);
 
   return (
@@ -90,8 +101,8 @@ const Header = (props) => {
           <HeaderNavigation
             className="header__navigation"
             navItems={navItems}
-            subMenuStatuses={props.subMenuStatuses}
-            changeSubMenuStatuses={props.changeSubMenuStatuses}
+            subMenuStatuses={subMenuStatuses}
+            changeSubMenuStatuses={setSubMenuStatuses}
           />
         </div>
         <HeaderLogo className="header__logo" {...logoInfo} />

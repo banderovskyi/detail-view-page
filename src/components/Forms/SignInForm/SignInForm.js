@@ -22,7 +22,7 @@ const SignInForm = (props) => {
     passwordCheck: passwordCheck,
   };
   const formStatus = useFormStatus(
-    'https://jsonplaceholder.typicode.com/posts',
+    'https://reqres.in/api/users',
     formData,
     { text: 'Sign Up & Save' },
     {}

@@ -66,7 +66,6 @@ const CardsSlider = (props) => {
 
   const prevClickHandler = () => {
     setActiveCardIndex((prevIndex) => {
-      console.log(prevIndex);
       if (prevIndex <= 0) {
         return itemsLength - cardsCount;
       }

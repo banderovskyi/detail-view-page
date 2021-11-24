@@ -24,7 +24,7 @@ const ScheduleForm = (props) => {
     message: message.value,
   };
   const formStatus = useFormStatus(
-    'https://jsonplaceholder.typicode.com/posts',
+    'https://reqres.in/api/users',
     formData,
     { text: 'Schedule A Visit' },
     {}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '../Forms.scss';
 import { useInput } from '../inputHook';
@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import Button from '../../UI/Button/Button';
 import { useFormStatus } from '../formStatusHook';
 import { openSignupModal, closeModal } from '../../Modal/ModalSlice';
+import { setUserEmail, userLogIn } from '../../../app/appSlice';
+import { loginIntoLocalStorage } from '../../../helpers/helpers';
 
 const LogInForm = (props) => {
   const dispatch = useDispatch();
@@ -15,12 +17,20 @@ const LogInForm = (props) => {
     email: email,
     password: password,
   };
-  const formStatus = useFormStatus(
-    'https://jsonplaceholder.typicode.com/posts',
-    formData,
-    { text: 'Log In' },
-    {}
-  );
+  const formStatus = useFormStatus('https://reqres.in/api/users', formData, { text: 'Log In' }, {});
+
+  useEffect(() => {
+    if (formStatus.statuses.isSuccess) {
+      const userEmail = formStatus.userData.data.email.value;
+      dispatch(closeModal());
+      dispatch(userLogIn());
+      dispatch(setUserEmail(userEmail));
+      loginIntoLocalStorage(userEmail);
+      email.setInput('');
+      password.setInput('');
+      formStatus.resetFormStatus();
+    }
+  }, [formStatus, dispatch, email, password]);
 
   const openSignUpHandler = () => {
     dispatch(closeModal());

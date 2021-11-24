@@ -1,19 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  testString: 'test',
+  isUserLoggedIn: false,
+  isFavoriteListing: false,
+  userEmail: null,
 };
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    test: (state, action) => {
-      state.testString = action.payload;
+    userLogIn: (state) => {
+      state.isUserLoggedIn = true;
+    },
+    userLogOut: (state) => {
+      state.isUserLoggedIn = false;
+    },
+    setUserEmail: (state, action) => {
+      state.userEmail = action.payload;
+    },
+    setIsFavorite: (state) => {
+      state.isFavoriteListing = true;
+    },
+    unsetIsFavorite: (state) => {
+      state.isFavoriteListing = false;
     },
   },
 });
 
-export const { test } = appSlice.actions;
+export const { userLogIn, userLogOut, setUserEmail, setIsFavorite, unsetIsFavorite } =
+  appSlice.actions;
 
 export default appSlice.reducer;
