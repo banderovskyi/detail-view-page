@@ -27,6 +27,10 @@ const Modal = (props) => {
     } else {
       enableScroll();
     }
+
+    return () => {
+      enableScroll();
+    };
   }, [props.isActive]);
 
   return (

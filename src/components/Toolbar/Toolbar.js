@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Toolbar.scss';
 import Button from '../UI/Button/Button';
 import { faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { openLoginModal, openContactModal } from '../Modal/ModalSlice';
-import { setIsFavorite, unsetIsFavorite } from '../../app/appSlice';
+import { setIsFavorite, unsetIsFavorite, willBeFavorite } from '../../app/appSlice';
 import { removeFavouriteFromLocalStorage, setFavouriteToLocalStorage } from '../../helpers/helpers';
 
 const Toolbar = (props) => {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.app);
 
+  useEffect(() => {
+    if (userState.willBeFavorite && userState.isUserLoggedIn) {
+      dispatch(setIsFavorite());
+      setFavouriteToLocalStorage();
+    }
+  }, [userState.willBeFavorite, userState.isUserLoggedIn, dispatch]);
+
   const favoriteClickHandler = () => {
     if (!userState.isUserLoggedIn) {
       dispatch(openLoginModal());
+      dispatch(willBeFavorite());
       return;
     }
     if (!userState.isFavoriteListing) {
@@ -30,6 +38,10 @@ const Toolbar = (props) => {
     dispatch(openContactModal());
   };
 
+  const favoriteCondition = () => {
+    return userState.isFavoriteListing && userState.isUserLoggedIn;
+  };
+
   return (
     <div className={`toolbar ${props.className ? props.className : ''}`}>
       {userState.isUserLoggedIn && (
@@ -42,9 +54,7 @@ const Toolbar = (props) => {
           <Button
             onClick={favoriteClickHandler}
             className={`toolbar__btn toolbar__btn-favorite ${
-              userState.isFavoriteListing && userState.isUserLoggedIn
-                ? 'toolbar__btn-favorite--active'
-                : ''
+              favoriteCondition() ? 'toolbar__btn-favorite--active' : ''
             }`}
             text="Favorite"
             icon={faHeart}

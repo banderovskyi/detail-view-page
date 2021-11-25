@@ -3,7 +3,8 @@ import './HeaderLinks.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogOut } from '../../../app/appSlice';
-import { logoutFromLocalStorage } from '../../../helpers/helpers';
+import { openLoginModal, openSignupModal } from '../../Modal/ModalSlice';
+import { logoutFromLocalStorage, removeFavouriteFromLocalStorage } from '../../../helpers/helpers';
 
 const HeaderLinks = (props) => {
   const dispatch = useDispatch();
@@ -12,6 +13,17 @@ const HeaderLinks = (props) => {
     e.preventDefault();
     dispatch(userLogOut());
     logoutFromLocalStorage();
+    removeFavouriteFromLocalStorage();
+  };
+
+  const logInHandler = (e) => {
+    e.preventDefault();
+    dispatch(openLoginModal());
+  };
+
+  const signUpHandler = (e) => {
+    e.preventDefault();
+    dispatch(openSignupModal());
   };
 
   return (
@@ -31,10 +43,14 @@ const HeaderLinks = (props) => {
         ) : (
           <>
             <li className="header-links__item">
-              <a href="/login/">Log in</a>
+              <a href="/login/" onClick={logInHandler}>
+                Log in
+              </a>
             </li>
             <li className="header-links__item">
-              <a href="/login/">Sign Up</a>
+              <a href="/sign-up/" onClick={signUpHandler}>
+                Sign Up
+              </a>
             </li>
           </>
         )}

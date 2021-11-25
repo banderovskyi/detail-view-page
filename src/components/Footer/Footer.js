@@ -11,7 +11,7 @@ const Footer = (props) => {
     src: 'https://s3.amazonaws.com/files.usmre.com/8844/usm-logo-blue.svg',
     alt: 'Logo',
   });
-  const [socialLinks, setSocialLinks] = useState([
+  const [socialLinks] = useState([
     { href: 'https://www.facebook.com/', icon: faFacebookF },
     { href: 'https://www.instagram.com/', icon: faInstagram },
   ]);
