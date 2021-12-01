@@ -8,6 +8,7 @@ import { useFormStatus } from '../formStatusHook';
 import { openSignupModal, closeModal } from '../../Modal/ModalSlice';
 import { setUserEmail, userLogIn } from '../../../app/appSlice';
 import { loginIntoLocalStorage } from '../../../helpers/helpers';
+import { formPostAPI } from '../apiLinks';
 
 const LogInForm = (props) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const LogInForm = (props) => {
     email: email,
     password: password,
   };
-  const formStatus = useFormStatus('https://reqres.in/api/users', formData, { text: 'Log In' }, {});
+  const formStatus = useFormStatus(formPostAPI, formData, { text: 'Log In' }, {});
 
   useEffect(() => {
     if (formStatus.statuses.isSuccess) {

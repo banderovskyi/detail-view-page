@@ -17,37 +17,36 @@ beforeEach(() => {
 });
 
 describe('Modal component', () => {
-  it('should be rendered', () => {
-    expect(component.querySelector('.overlay .modal')).toBeInTheDocument();
+  it('should properly open a "Sign Up" modal on favorite click', () => {
+    fireEvent.click(component.querySelector('a[href="/sign-up/"]'));
+    console.log(component.querySelector('#modal-signup').className);
+    expect(component.querySelector('#modal-signup').className.includes('overlay--active')).toBe(
+      true
+    );
+    expect(document.querySelector('#modal-signup')).toBeInTheDocument();
+    fireEvent.click(component.querySelector('#modal-signup .modal__close'));
+    expect(component.querySelector('#modal-signup')).toBeFalsy();
   });
-  it('should render all parts', () => {
-    expect(component.querySelector('.modal .modal__header')).toBeInTheDocument();
-    expect(component.querySelector('.modal .modal__content')).toBeInTheDocument();
-    expect(component.querySelector('.modal .modal__close')).toBeInTheDocument();
-  });
-  it('button "Favorite" should open the modal and than button should be closed', () => {
+
+  it('should properly open a "Login" modal on favorite click', () => {
     fireEvent.click(component.querySelector('.toolbar__btn-favorite'));
+    console.log(component.querySelector('#favorite-modal').className);
     expect(component.querySelector('#favorite-modal').className.includes('overlay--active')).toBe(
       true
     );
+    expect(document.querySelector('#modal-login')).toBeInTheDocument();
     fireEvent.click(component.querySelector('#favorite-modal .modal__close'));
-    expect(component.querySelector('#favorite-modal').className.includes('overlay--active')).toBe(
-      false
+    expect(component.querySelector('#favorite-modal')).toBeFalsy();
+  });
+
+  it('should properly open a "Contact us" modal', () => {
+    fireEvent.click(component.querySelector('.toolbar__btn-contact'));
+    console.log(component.querySelector('#contact-modal').className);
+    expect(component.querySelector('#contact-modal').className.includes('overlay--active')).toBe(
+      true
     );
-  });
-  it('"Contact" modal shouldnt render a subtitle', () => {
-    expect(component.querySelector('#contact-modal .modal__sub-title')).toBeFalsy();
-  });
-  it('shouldt render content and subtitle without props', () => {
-    const testModal = render(
-      <Provider store={store}>
-        <Modal
-          id="test-modal"
-          title="Log in or create an account to save this listing to your favorites"
-        />
-      </Provider>
-    ).container;
-    expect(testModal.querySelector('.modal__sub-title')).toBeFalsy();
-    expect(testModal.querySelector('.modal__content')).toBeFalsy();
+    expect(component.querySelector('#modal-contact')).toBeInTheDocument();
+    fireEvent.click(component.querySelector('#contact-modal .modal__close'));
+    expect(component.querySelector('#contact-modal')).toBeFalsy();
   });
 });

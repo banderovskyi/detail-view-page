@@ -6,6 +6,7 @@ import Button from '../../UI/Button/Button';
 import { useFormStatus } from '../formStatusHook';
 import { useDispatch } from 'react-redux';
 import { openLoginModal, closeModal } from '../../Modal/ModalSlice';
+import { formPostAPI } from '../apiLinks';
 
 const SignInForm = (props) => {
   const dispatch = useDispatch();
@@ -21,12 +22,7 @@ const SignInForm = (props) => {
     password: password,
     passwordCheck: passwordCheck,
   };
-  const formStatus = useFormStatus(
-    'https://reqres.in/api/users',
-    formData,
-    { text: 'Sign Up & Save' },
-    {}
-  );
+  const formStatus = useFormStatus(formPostAPI, formData, { text: 'Sign Up & Save' }, {});
 
   const openLogInHandler = () => {
     dispatch(closeModal());

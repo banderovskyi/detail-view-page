@@ -4,6 +4,7 @@ import '../Forms.scss';
 import { useInput } from '../inputHook';
 import Button from '../../UI/Button/Button';
 import { useFormStatus } from '../formStatusHook';
+import { formPostAPI } from '../apiLinks';
 
 const SubscribeFrom = (props) => {
   const fullName = useInput('');
@@ -12,12 +13,7 @@ const SubscribeFrom = (props) => {
     fullName: fullName,
     email: email,
   };
-  const formStatus = useFormStatus(
-    'https://reqres.in/api/users',
-    formData,
-    { text: 'Subscribe' },
-    {}
-  );
+  const formStatus = useFormStatus(formPostAPI, formData, { text: 'Subscribe' }, {});
 
   return (
     <form onSubmit={formStatus.submitHandler} className="form" id={props.id}>

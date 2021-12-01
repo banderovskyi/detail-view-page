@@ -22,7 +22,7 @@ const CardsSlider = (props) => {
 
   const [itemsLength] = useState(props.items.length);
 
-  const [windowWidth, setwindowWidth] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [sliderWrapperWidth, setSliderWrapperWidth] = useState(0);
   const [itemNodeWidth, setItemNodeWidth] = useState(0);
@@ -30,7 +30,7 @@ const CardsSlider = (props) => {
   const $sliderWrapper = useRef(null);
 
   const initSliderSizes = () => {
-    setwindowWidth(window.innerWidth);
+    setWindowWidth(window.innerWidth);
     if (windowWidth < mobileBreakpoint) {
       setCardsCount(cardsCountNumber.mobile);
     } else if (mobileBreakpoint <= windowWidth && windowWidth < tabletBreakpoint) {
