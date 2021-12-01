@@ -11,6 +11,8 @@ export function useFormStatus(apiLink = '', formData = {}, buttonStatus, formsSt
   const [buttonText, setButtonText] = useState(buttonStatus.text || 'Submit');
   const [buttonIcon, setButtonIcon] = useState(buttonStatus.icon || null);
   const [buttonClass, setButtonClass] = useState(buttonStatus.class || '');
+  // User data
+  const [userData, setUserData] = useState(null);
 
   // Changing a button information depending of form status
   useEffect(() => {
@@ -38,15 +40,24 @@ export function useFormStatus(apiLink = '', formData = {}, buttonStatus, formsSt
         ...formData,
       })
       .then(function (response) {
-        console.log(response);
+        setUserData(response);
         setIsLoading(false);
         setIsSuccess(true);
       })
       .catch(function (error) {
         console.log(error);
         setIsError(true);
-        isLoading(false);
+        setIsLoading(false);
       });
+  };
+
+  const resetFormStatus = () => {
+    setIsLoading(false);
+    setIsSuccess(false);
+    setIsError(false);
+    setButtonIcon(null);
+    setButtonText(buttonStatus.text);
+    setButtonClass('');
   };
 
   return {
@@ -68,5 +79,7 @@ export function useFormStatus(apiLink = '', formData = {}, buttonStatus, formsSt
     setLoading: (newValue) => {
       setIsLoading(newValue);
     },
+    userData,
+    resetFormStatus,
   };
 }

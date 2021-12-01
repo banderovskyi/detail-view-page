@@ -20,12 +20,7 @@ const ContactUsForm = (props) => {
     phone: phone.value,
     message: message.value,
   };
-  const formStatus = useFormStatus(
-    'https://jsonplaceholder.typicode.com/posts',
-    formData,
-    { text: 'Send' },
-    {}
-  );
+  const formStatus = useFormStatus('https://reqres.in/api/users', formData, { text: 'Send' }, {});
 
   return (
     <form onSubmit={formStatus.submitHandler} className="form" id={props.id}>

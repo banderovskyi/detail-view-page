@@ -1,10 +1,6 @@
 @import '../../vars';
 
 .toolbar {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
-  row-gap: 10px;
   padding: 30px;
   border-bottom: 1px solid $color-border;
   background-color: $white;
@@ -13,8 +9,32 @@
   top: 0;
 }
 
+.toolbar__user {
+  margin-bottom: 10px;
+  b {
+    font-weight: 500;
+  }
+}
+
+.toolbar__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 10px;
+}
+
 .toolbar__btn {
   width: 100%;
+}
+
+.toolbar__btn-favorite {
+  &--active {
+    svg,
+    path,
+    span {
+      color: $color-favorite;
+    }
+  }
 }
 
 @media screen and (max-width: $screen-sm - 1px) {
