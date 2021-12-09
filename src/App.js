@@ -52,22 +52,28 @@ function App() {
         <ListedBy />
       </div>
       <Footer />
-      <Modal
-        id="favorite-modal"
-        isActive={modalStatuses.isLoginModalVisible}
-        title="Log in or create an account to save this listing to your favorites"
-        subtitle="Log in to your account to save your favorite listings for later.">
-        <LogInForm id="modal-login" />
-      </Modal>
-      <Modal id="contact-modal" isActive={modalStatuses.isContactModalVisible} title="Contact Us">
-        <ContactUsForm id="modal-contact" address="59 High Street Brookline MA 02445" />
-      </Modal>
-      <Modal
-        id="modal-signup"
-        isActive={modalStatuses.isSignInModalVisible}
-        title="Sign up to save this favorite">
-        <SignInForm id="modal-sign-up" />
-      </Modal>
+      {modalStatuses.isLoginModalVisible && (
+        <Modal
+          id="favorite-modal"
+          isActive={modalStatuses.isLoginModalVisible}
+          title="Log in or create an account to save this listing to your favorites"
+          subtitle="Log in to your account to save your favorite listings for later.">
+          <LogInForm id="modal-login" />
+        </Modal>
+      )}
+      {modalStatuses.isContactModalVisible && (
+        <Modal id="contact-modal" isActive={modalStatuses.isContactModalVisible} title="Contact Us">
+          <ContactUsForm id="modal-contact" address="59 High Street Brookline MA 02445" />
+        </Modal>
+      )}
+      {modalStatuses.isSignInModalVisible && (
+        <Modal
+          id="modal-signup"
+          isActive={modalStatuses.isSignInModalVisible}
+          title="Sign up to save this favorite">
+          <SignInForm id="modal-sign-up" />
+        </Modal>
+      )}
     </div>
   );
 }

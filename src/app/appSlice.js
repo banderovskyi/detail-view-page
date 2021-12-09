@@ -2,8 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isUserLoggedIn: false,
-  isFavoriteListing: false,
   userEmail: null,
+  isFavoriteListing: false,
+  willBeFavorite: false,
 };
 
 export const appSlice = createSlice({
@@ -25,10 +26,19 @@ export const appSlice = createSlice({
     unsetIsFavorite: (state) => {
       state.isFavoriteListing = false;
     },
+    willBeFavorite: (state) => {
+      state.willBeFavorite = true;
+    },
   },
 });
 
-export const { userLogIn, userLogOut, setUserEmail, setIsFavorite, unsetIsFavorite } =
-  appSlice.actions;
+export const {
+  userLogIn,
+  userLogOut,
+  setUserEmail,
+  setIsFavorite,
+  unsetIsFavorite,
+  willBeFavorite,
+} = appSlice.actions;
 
 export default appSlice.reducer;

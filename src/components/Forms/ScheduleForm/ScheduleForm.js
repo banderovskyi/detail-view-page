@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useInput } from '../inputHook';
 import Button from '../../UI/Button/Button';
 import { useFormStatus } from '../formStatusHook';
+import { formPostAPI } from '../apiLinks';
 
 const ScheduleForm = (props) => {
   const fullName = useInput('');
@@ -23,12 +24,7 @@ const ScheduleForm = (props) => {
     time: time.value,
     message: message.value,
   };
-  const formStatus = useFormStatus(
-    'https://reqres.in/api/users',
-    formData,
-    { text: 'Schedule A Visit' },
-    {}
-  );
+  const formStatus = useFormStatus(formPostAPI, formData, { text: 'Schedule A Visit' }, {});
 
   return (
     <form onSubmit={formStatus.submitHandler} className="form" id={props.id}>
